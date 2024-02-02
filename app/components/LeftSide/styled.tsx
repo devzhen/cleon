@@ -116,7 +116,6 @@ export const LogoWrapper = styled.div`
   span {
     margin-left: 8px;
     color: #eb6529;
-    font-family: "Roboto-Medium";
     text-transform: uppercase;
     font-size: 28px;
   }

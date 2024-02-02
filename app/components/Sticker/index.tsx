@@ -13,7 +13,7 @@ import {
 type StickerProps = {
   sticker: Sticker;
   onMouseDown: VoidFunction;
-  editSticker: () => void;
+  editSticker: (e: MouseEvent) => void;
 };
 
 const Sticker = (props: StickerProps) => {
@@ -24,6 +24,7 @@ const Sticker = (props: StickerProps) => {
       onMouseDown={onMouseDown}
       $top={sticker.top}
       $left={sticker.left}
+      className="sticker"
     >
       <Date>Date</Date>
       <ContentWrapper>
@@ -36,7 +37,7 @@ const Sticker = (props: StickerProps) => {
           height={13}
           alt="Picture of the author"
           draggable={false}
-          onClick={editSticker}
+          onClick={editSticker as VoidFunction}
         />
       </ImageWrapper>
     </Container>

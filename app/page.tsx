@@ -1,13 +1,20 @@
 "use client";
+import { Roboto } from "next/font/google";
 
 import styled from "styled-components";
 
 import Header from "./components/Header";
 import LeftSide from "./components/LeftSide";
 
+const font = Roboto({
+  subsets: ["latin"],
+  weight: "400",
+  fallback: ["Times New Roman"],
+});
+
 export default function Home() {
   return (
-    <Main>
+    <Main className={font.className}>
       <header>
         <Header />
       </header>

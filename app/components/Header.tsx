@@ -55,7 +55,6 @@ const HeaderLogoTitleTop = styled.div`
   span {
     font-size: 18px;
     color: #fff;
-    font-family: Roboto;
     text-transform: uppercase;
   }
 `;
@@ -68,7 +67,6 @@ const HeaderLogoTitleBottom = styled.div`
   span {
     font-size: 18px;
     color: #232323;
-    font-family: Roboto-Medium;
     text-transform: uppercase;
   }
 `;

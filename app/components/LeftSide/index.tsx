@@ -23,7 +23,7 @@ import {
 export default function LeftSide() {
   const currentDragElementRef = useRef<HTMLDivElement>();
 
-  // Current draggable sticker
+  // Current draggable sticker's parent
   const currentDragElementParentRef = useRef<HTMLDivElement>();
 
   // Drag containers
@@ -311,8 +311,7 @@ export default function LeftSide() {
 
   const clickOffsetRef = useRef({ x: 0, y: 0 });
 
-  const [isDragStarted, setIsDragStarted] = useState(false);
-  const isDragStartedRef = useRef(isDragStarted);
+  const isDragStartedRef = useRef(false);
 
   const [stickers, setStickers] = useState<Sticker[]>(
     Object.values(stickersArray)
@@ -342,11 +341,11 @@ export default function LeftSide() {
   const onMouseDown = (e: MouseEvent) => {
     if (!isDragStartedRef.current) {
       isDragStartedRef.current = true;
-      setIsDragStarted(true);
     }
 
-    currentDragElementRef.current = (e.target as HTMLDivElement)
-      ?.parentElement as HTMLDivElement;
+    currentDragElementRef.current = (e.target as HTMLElement)?.closest(
+      ".sticker"
+    ) as HTMLDivElement;
     currentDragElementRef.current.style.cursor = "move";
 
     const offsetX =
@@ -378,14 +377,18 @@ export default function LeftSide() {
       const offsetY = e.pageY - parentTop - clickOffsetRef.current.y;
       currentDragElementRef.current.style.top = `${Math.max(0, offsetY)}px`;
 
-      console.log(offsetX, offsetY);
-
       detectParentContainer();
 
       correctPositionRelativeToParent();
 
       correctPositionRelativeToDragContainer();
     }
+  };
+
+  const editStickerHandler = (sticker: Sticker) => (e: MouseEvent) => {
+    e.stopPropagation();
+
+    console.log(sticker);
   };
 
   /**
@@ -402,8 +405,6 @@ export default function LeftSide() {
 
       if (isDragStartedRef.current) {
         isDragStartedRef.current = false;
-
-        setIsDragStarted(false);
       }
     };
 
@@ -414,7 +415,6 @@ export default function LeftSide() {
     return () => {
       document.removeEventListener("mouseup", onMouseUp);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -516,7 +516,7 @@ export default function LeftSide() {
             onMouseDown={onMouseDown as VoidFunction}
             key={item.id}
             sticker={item}
-            editSticker={() => {}}
+            editSticker={editStickerHandler(item)}
           />
         ))}
       </Container>

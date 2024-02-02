@@ -24,7 +24,6 @@ export const Date = styled.div`
   font-size: 10px;
   margin-left: 7px;
   margin-bottom: 5px;
-  font-family: 'RobotoLight';
 `;
 
 export const ContentWrapper = styled.div`
@@ -40,7 +39,6 @@ export const Content = styled.span`
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  font-family: 'RobotoLight';
   line-height: 1.5;
 `;
 

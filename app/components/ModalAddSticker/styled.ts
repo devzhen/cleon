@@ -51,7 +51,6 @@ export const TextArea = styled.textarea`
   background-color: #fffde6;
   border: 1px solid #dfe2e7;
   color: #2e2e2e;
-  font-family: 'RobotoLight';
   font-size: 18px;
   padding: 13px;
   line-height: 1.2;
