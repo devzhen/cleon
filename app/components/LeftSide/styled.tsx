@@ -21,6 +21,21 @@ export const Container = styled.div`
   .drag-area {
     position: absolute;
   }
+
+  .drag-area:nth-child(1) {
+    background: blue;
+    opacity: 0.6;
+  }
+
+  .drag-area:nth-child(2) {
+    background: green;
+    opacity: 0.6;
+  }
+
+  .drag-area:nth-child(3) {
+    background: yellow;
+    opacity: 0.6;
+  }
 `;
 
 export const Cell = styled.div<{
@@ -105,21 +120,4 @@ export const LogoWrapper = styled.div`
     text-transform: uppercase;
     font-size: 28px;
   }
-`;
-
-export const StickerElement = styled.div<{
-  $top?: number;
-  $left?: number;
-}>`
-  position: absolute;
-  width: 178px;
-  height: 181px;
-  background-color: #fff8c8;
-  border: 1px solid white;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
-  z-index: 2;
-  cursor: pointer;
-
-  ${(props) => props.$top && `top: ${props.$top}px`};
-  ${(props) => props.$left && `left: ${props.$left}px`};
 `;

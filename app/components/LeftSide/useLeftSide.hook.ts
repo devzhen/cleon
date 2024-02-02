@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { MutableRefObject, useRef } from "react";
 
 import getCoords from "@/app/utils/getCoords";
 import isPointInPath from "@/app/utils/isPointInPath";
 
-const useLeftSide = () => {
-  const clickOffsetRef = useRef({ x: 0, y: 0 });
+type UseLeftSideProps = {
+  currentDragElementRef: MutableRefObject<HTMLDivElement | undefined>
+}
+
+const useLeftSide = (props: UseLeftSideProps) => {
+  const { currentDragElementRef } = props;
 
   // Current draggable sticker
-  const currentDragElementRef = useRef<HTMLDivElement>();
   const currentDragElementParentRef = useRef<HTMLDivElement>();
 
   // Drag containers
@@ -21,9 +24,6 @@ const useLeftSide = () => {
   const logoWrapperRef = useRef<HTMLDivElement>(null);
   const buttonsWrapperRef = useRef<HTMLDivElement>(null);
   const lastBannerWrapperRef = useRef<HTMLDivElement>(null);
-
-  const [isDragStarted, setIsDragStarted] = useState(false);
-  const isDragStartedRef = useRef(isDragStarted);
 
   /**
    * Init draggable areas
@@ -296,85 +296,7 @@ const useLeftSide = () => {
     }
   };
 
-  /**
-   * Mouse down handler.
-   */
-  const onMouseDown = (e: MouseEvent) => {
-    if (!isDragStartedRef.current) {
-      isDragStartedRef.current = true;
-      setIsDragStarted(true);
-    }
-
-    currentDragElementRef.current = e.target as HTMLDivElement;
-    currentDragElementRef.current.style.cursor = "move";
-
-    const offsetX =
-      e.pageX - currentDragElementRef.current?.getBoundingClientRect().left;
-
-    const offsetY =
-      e.pageY - currentDragElementRef.current?.getBoundingClientRect().top;
-
-    clickOffsetRef.current.x = offsetX;
-    clickOffsetRef.current.y = offsetY;
-  };
-
-  /**
-   * Mouse move handler.
-   */
-  const onMouseMove = (e: MouseEvent) => {
-    if (!isDragStartedRef.current) {
-      return;
-    }
-
-    if (currentDragElementRef.current) {
-      const { left: parentLeft, top: parentTop } = (
-        dragContainerRef.current as HTMLDivElement
-      ).getBoundingClientRect();
-
-      const offsetX = e.pageX - parentLeft - clickOffsetRef.current.x;
-      currentDragElementRef.current.style.left = `${Math.max(0, offsetX)}px`;
-
-      const offsetY = e.pageY - parentTop - clickOffsetRef.current.y;
-      currentDragElementRef.current.style.top = `${Math.max(0, offsetY)}px`;
-
-      detectParentContainer();
-
-      correctPositionRelativeToParent();
-
-      correctPositionRelativeToDragContainer();
-    }
-  };
-
-  /**
-   * Lifecycle
-   */
-  useEffect(() => {
-    /**
-     * Mouse up handler
-     */
-    const onMouseUp = () => {
-      if (currentDragElementRef.current) {
-        currentDragElementRef.current.style.cursor = "pointer";
-      }
-
-      if (isDragStartedRef.current) {
-        isDragStartedRef.current = false;
-
-        setIsDragStarted(false);
-      }
-    };
-
-    document.addEventListener("mouseup", onMouseUp);
-
-    initDragAreas();
-
-    return () => {
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-  }, []);
-
   return {
-    clickOffsetRef,
     currentDragElementRef,
     currentDragElementParentRef,
     dragContainerRef,
@@ -385,12 +307,11 @@ const useLeftSide = () => {
     logoWrapperRef,
     buttonsWrapperRef,
     lastBannerWrapperRef,
-    isDragStarted,
-    setIsDragStarted,
-    isDragStartedRef,
-    onMouseMove,
-    onMouseDown
-  }
+    initDragAreas,
+    detectParentContainer,
+    correctPositionRelativeToParent,
+    correctPositionRelativeToDragContainer,
+  };
 }
 
-export default useLeftSide
+export default useLeftSide;
