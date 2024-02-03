@@ -21,21 +21,6 @@ export const Container = styled.div`
   .drag-area {
     position: absolute;
   }
-
-  .drag-area:nth-child(1) {
-    background: blue;
-    opacity: 0.6;
-  }
-
-  .drag-area:nth-child(2) {
-    background: green;
-    opacity: 0.6;
-  }
-
-  .drag-area:nth-child(3) {
-    background: yellow;
-    opacity: 0.6;
-  }
 `;
 
 export const Cell = styled.div<{

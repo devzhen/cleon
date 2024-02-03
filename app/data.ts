@@ -9,7 +9,7 @@ export const stickers = {
     id: firstId,
     top: 110,
     left: 230,
-    createdAt: new Date().toISOString(),
+    createdAt: '2024-02-03T04:02:55.615Z',
     text: 'test draggable element',
     board: BOARD_TYPE.left
   }

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { parseISO, format } from "date-fns";
 
 import { Sticker } from "@/app/data";
 
@@ -19,6 +20,9 @@ type StickerProps = {
 const Sticker = (props: StickerProps) => {
   const { sticker, onMouseDown, editSticker } = props;
 
+  const date = parseISO(sticker.createdAt);
+  const dateFormatted = format(date, "LLLL d, yyyy");
+
   return (
     <Container
       onMouseDown={onMouseDown}
@@ -26,7 +30,7 @@ const Sticker = (props: StickerProps) => {
       $left={sticker.left}
       className="sticker"
     >
-      <Date>Date</Date>
+      <Date>{dateFormatted}</Date>
       <ContentWrapper>
         <Content>{sticker.text}</Content>
       </ContentWrapper>

@@ -225,6 +225,21 @@ export default function LeftSide() {
       ) {
         currentDragElementParentRef.current = dragArea2Ref.current;
       }
+
+      // If move to right, attach to the drag area 2
+      if (
+        stickerCoords.top <= dragArea3Coords.top &&
+        stickerCoords.left > dragArea3Coords.left &&
+        stickerCoords.right >= dragArea3Coords.right &&
+        stickerCoords.bottom < dragArea3Coords.bottom &&
+        isPointInPath(
+          lastBannerWrapperRef.current,
+          stickerCoords.right,
+          stickerCoords.bottom
+        )
+      ) {
+        currentDragElementParentRef.current = dragArea2Ref.current;
+      }
     }
   };
 
@@ -450,6 +465,7 @@ export default function LeftSide() {
                 height={132}
                 alt="Banner 2"
                 draggable={false}
+                priority
               />
             </Banner>
             <Banner $marginTop={10} $marginLeft={10}>
@@ -459,6 +475,7 @@ export default function LeftSide() {
                 height={132}
                 alt="Banner 3"
                 draggable={false}
+                priority
               />
             </Banner>
           </FloatingWrapper>
