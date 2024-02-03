@@ -7,6 +7,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr;
   height: calc(100vh - 72px);
   min-width: 1152px;
+  min-height: 863px;
   border: 3px solid #bfc3ca;
   margin-left: 3px;
   background-color: #e9ecf1;
@@ -49,7 +50,7 @@ export const BannersRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 10px 10px 10px;
 
   div {
     display: flex;
@@ -60,4 +61,13 @@ export const BannersRow = styled.div`
       margin-left: 10px;
     }
   }
+`;
+
+export const FloatingWrapper = styled.div<{
+  $paddingTop?: number;
+}>`
+  width: fit-content;
+  height: fit-content;
+
+  ${(props) => props.$paddingTop && `padding-top: ${props.$paddingTop}px`};
 `;

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { parseISO, format } from "date-fns";
+import Image from "next/image";
 
 import { Sticker } from "@/app/data";
 
@@ -14,6 +14,7 @@ import {
 type StickerProps = {
   sticker: Sticker;
   onMouseDown: VoidFunction;
+  // eslint-disable-next-line unused-imports/no-unused-vars
   editSticker: (e: MouseEvent) => void;
 };
 

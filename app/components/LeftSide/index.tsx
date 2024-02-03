@@ -1,14 +1,13 @@
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { v4 as uuid } from "uuid";
-import { clone as ramdaClone } from "ramda";
+import { useRef } from "react";
 
-import { BOARD_TYPE, DEFAULT_COORDS } from "@/app/constants";
-import { Sticker, stickers as stickersArray } from "@/app/data";
-import useModal from "@/app/hooks/useModal.hook";
+import { BOARD_TYPE } from "@/app/constants";
+import useDraggableAreas from "@/app/hooks/useDraggableAreas";
+import useSticker from "@/app/hooks/useSticker";
 import getCoords from "@/app/utils/getCoords";
 import isPointInPath from "@/app/utils/isPointInPath";
 
+import ButtonsAddDelete from "../ButtonsAddDelete";
 import ModalAddSticker from "../ModalAddSticker";
 import StickerComponent from "../Sticker";
 
@@ -17,10 +16,8 @@ import {
   Cell,
   FloatingWrapper,
   Banner,
-  Button,
   LogoWrapper,
 } from "./styled";
-import ButtonsAddDelete from "../ButtonsAddDelete";
 
 export default function LeftSide() {
   // Current draggable sticker
@@ -327,143 +324,36 @@ export default function LeftSide() {
     }
   };
 
-  const clickOffsetRef = useRef({ x: 0, y: 0 });
-
-  const isDragStartedRef = useRef(false);
-
-  const [stickers, setStickers] =
-    useState<Record<string, Sticker>>(stickersArray);
-  const [editedSticker, setEditedSticker] = useState<Sticker | null>(null);
-
-  const { isModalOpen, setModalVisibility, closeModal, openModal } = useModal();
-
-  const createSticker = ({
-    text,
-    board,
-    id,
-  }: {
-    text: string;
-    board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
-    id: string | undefined;
-  }) => {
-    const stickersClone = ramdaClone(stickers);
-
-    if (id && text === stickersClone[id].text) {
-      closeModal();
-      return;
-    }
-
-    if (id) {
-      stickersClone[id].text = text;
-
-      setStickers(stickersClone);
-    } else {
-      const newId = uuid();
-
-      stickersClone[newId] = {
-        id: newId,
-        top: DEFAULT_COORDS.top,
-        left: DEFAULT_COORDS.left,
-        createdAt: new Date().toISOString(),
-        text,
-        board,
-      };
-    }
-
-    setStickers(stickersClone);
-    closeModal();
-  };
-
   /**
-   * Mouse down handler.
+   * Use draggable areas hook
    */
-  const onMouseDown = (e: MouseEvent) => {
-    if (!isDragStartedRef.current) {
-      isDragStartedRef.current = true;
-    }
-
-    currentDragElementRef.current = (e.target as HTMLElement)?.closest(
-      ".sticker"
-    ) as HTMLDivElement;
-    currentDragElementRef.current.style.cursor = "move";
-
-    const offsetX =
-      e.pageX - currentDragElementRef.current.getBoundingClientRect().left;
-
-    const offsetY =
-      e.pageY - currentDragElementRef.current.getBoundingClientRect().top;
-
-    clickOffsetRef.current.x = offsetX;
-    clickOffsetRef.current.y = offsetY;
-  };
-
-  /**
-   * Mouse move handler.
-   */
-  const onMouseMove = (e: MouseEvent) => {
-    if (!isDragStartedRef.current || !currentDragElementRef.current) {
-      return;
-    }
-
-    if (currentDragElementRef) {
-      const { left: parentLeft, top: parentTop } = (
-        dragContainerRef.current as HTMLDivElement
-      ).getBoundingClientRect();
-
-      const offsetX = e.pageX - parentLeft - clickOffsetRef.current.x;
-      currentDragElementRef.current.style.left = `${Math.max(0, offsetX)}px`;
-
-      const offsetY = e.pageY - parentTop - clickOffsetRef.current.y;
-      currentDragElementRef.current.style.top = `${Math.max(0, offsetY)}px`;
-
+  const { onMouseDown, onMouseMove } = useDraggableAreas({
+    currentDragElementRef,
+    dragContainerRef,
+    onMountHandler: initDragAreas,
+    onMouseMoveHandler: () => {
       detectParentContainer();
 
       correctPositionRelativeToParent();
 
       correctPositionRelativeToDragContainer();
-    }
-  };
-
-  const editStickerHandler = (sticker: Sticker) => (e: MouseEvent) => {
-    e.stopPropagation();
-
-    setEditedSticker(sticker);
-    openModal();
-  };
-
-  const closeModalHandler = () => {
-    closeModal();
-
-    if (editedSticker) {
-      setEditedSticker(null);
-    }
-  };
+    },
+  });
 
   /**
-   * Lifecycle
+   * Use sticker hook
    */
-  useEffect(() => {
-    /**
-     * Mouse up handler
-     */
-    const onMouseUp = () => {
-      if (currentDragElementRef.current) {
-        currentDragElementRef.current.style.cursor = "pointer";
-      }
-
-      if (isDragStartedRef.current) {
-        isDragStartedRef.current = false;
-      }
-    };
-
-    document.addEventListener("mouseup", onMouseUp);
-
-    initDragAreas();
-
-    return () => {
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-  }, []);
+  const {
+    closeModalHandler,
+    createSticker,
+    editSticker,
+    editedSticker,
+    isModalOpen,
+    setModalVisibility,
+    stickers,
+  } = useSticker({
+    board: BOARD_TYPE.left,
+  });
 
   return (
     <>
@@ -563,12 +453,12 @@ export default function LeftSide() {
             </Banner>
           </FloatingWrapper>
         </Cell>
-        {Object.values(stickers).map((item) => (
+        {stickers.map((item) => (
           <StickerComponent
             onMouseDown={onMouseDown as VoidFunction}
             key={item.id}
             sticker={item}
-            editSticker={editStickerHandler(item)}
+            editSticker={editSticker(item)}
           />
         ))}
       </Container>
