@@ -10,25 +10,30 @@ import {
   ImageWrapper,
   BlurWrapper,
 } from "./styled";
+import { Sticker } from "@/app/data";
 
 type ModalAddStickerProps = {
   board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
   closeModal: () => void;
-  createSticker: (
-    // eslint-disable-next-line unused-imports/no-unused-vars
-    text: string,
-    // eslint-disable-next-line unused-imports/no-unused-vars
-    board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE]
-  ) => void;
+  createSticker: ({
+    text,
+    board,
+    id,
+  }: {
+    text: string;
+    board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
+    id: string | undefined;
+  }) => void;
+  sticker: Sticker | null;
 };
 
 const ModalAddSticker = (props: ModalAddStickerProps) => {
-  const { closeModal, createSticker, board } = props;
+  const { closeModal, createSticker, board, sticker } = props;
 
-  const [text, setText] = useState("");
+  const [text, setText] = useState(sticker?.text || "");
 
   const addStickerHandler = () => {
-    createSticker(text, board);
+    createSticker({ text, board, id: sticker?.id });
   };
 
   const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -41,7 +46,7 @@ const ModalAddSticker = (props: ModalAddStickerProps) => {
     <Background>
       <Container>
         <span>Entrez votre nom</span>
-        <TextArea onChange={onChangeHandler} />
+        <TextArea onChange={onChangeHandler} value={text} />
         <ImageWrapper>
           <Image
             src="/cross.png"

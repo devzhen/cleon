@@ -11,10 +11,15 @@ const useModal = () => {
     setIsModalOpen(false);
   }
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  }
+
   return  {
     isModalOpen,
     setModalVisibility,
-    closeModal
+    closeModal,
+    openModal
   }
 }
 

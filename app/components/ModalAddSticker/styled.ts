@@ -38,6 +38,7 @@ export const ImageWrapper = styled.div`
   img {
     width: 52px;
     height: 52px;
+    cursor: pointer;
   }
 
   img:nth-child(1) {

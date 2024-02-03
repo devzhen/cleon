@@ -1,15 +1,16 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
+import { clone as ramdaClone } from "ramda";
 
 import { BOARD_TYPE, DEFAULT_COORDS } from "@/app/constants";
-import { stickers as stickersArray } from "@/app/data";
+import { Sticker, stickers as stickersArray } from "@/app/data";
 import useModal from "@/app/hooks/useModal.hook";
 import getCoords from "@/app/utils/getCoords";
 import isPointInPath from "@/app/utils/isPointInPath";
 
 import ModalAddSticker from "../ModalAddSticker";
-import Sticker from "../Sticker";
+import StickerComponent from "../Sticker";
 
 import {
   Container,
@@ -328,26 +329,47 @@ export default function LeftSide() {
 
   const isDragStartedRef = useRef(false);
 
-  const [stickers, setStickers] = useState<Sticker[]>(
-    Object.values(stickersArray)
-  );
+  const [stickers, setStickers] =
+    useState<Record<string, Sticker>>(stickersArray);
+  const [editedSticker, setEditedSticker] = useState<Sticker | null>(null);
 
-  const { isModalOpen, setModalVisibility, closeModal } = useModal();
+  const { isModalOpen, setModalVisibility, closeModal, openModal } = useModal();
 
-  const createSticker = (
-    text: string,
-    board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE]
-  ) => {
-    const sticker = {
-      id: uuid(),
-      top: DEFAULT_COORDS.top,
-      left: DEFAULT_COORDS.left,
-      createdAt: new Date().toISOString(),
-      text,
-      board,
-    };
+  const createSticker = ({
+    text,
+    board,
+    id,
+  }: {
+    text: string;
+    board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
+    id: string | undefined;
+  }) => {
+    const stickersClone = ramdaClone(stickers);
 
-    setStickers((prev) => [...prev, sticker]);
+    if (id && text === stickersClone[id].text) {
+      closeModal();
+      return;
+    }
+
+    if (id) {
+      stickersClone[id].text = text;
+
+      setStickers(stickersClone);
+    } else {
+      const newId = uuid();
+
+      stickersClone[newId] = {
+        id: newId,
+        top: DEFAULT_COORDS.top,
+        left: DEFAULT_COORDS.left,
+        createdAt: new Date().toISOString(),
+        text,
+        board,
+      };
+    }
+
+    setStickers(stickersClone);
+    closeModal();
   };
 
   /**
@@ -403,7 +425,16 @@ export default function LeftSide() {
   const editStickerHandler = (sticker: Sticker) => (e: MouseEvent) => {
     e.stopPropagation();
 
-    console.log(sticker);
+    setEditedSticker(sticker);
+    openModal();
+  };
+
+  const closeModalHandler = () => {
+    closeModal();
+
+    if (editedSticker) {
+      setEditedSticker(null);
+    }
   };
 
   /**
@@ -528,8 +559,8 @@ export default function LeftSide() {
             </Banner>
           </FloatingWrapper>
         </Cell>
-        {stickers.map((item) => (
-          <Sticker
+        {Object.values(stickers).map((item) => (
+          <StickerComponent
             onMouseDown={onMouseDown as VoidFunction}
             key={item.id}
             sticker={item}
@@ -539,9 +570,10 @@ export default function LeftSide() {
       </Container>
       {isModalOpen && (
         <ModalAddSticker
-          closeModal={closeModal}
+          closeModal={closeModalHandler}
           createSticker={createSticker}
           board={BOARD_TYPE.left}
+          sticker={editedSticker}
         />
       )}
     </>
