@@ -9,14 +9,8 @@ export const Container = styled.div`
   max-width: 638px;
   height: calc(100vh - 72px);
   border: 3px solid #eb6529;
+  background-color: #e9ecf1;
   z-index: 2;
-
-  .buttons-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 22px 16px 0 0;
-  }
 
   .drag-area {
     position: absolute;

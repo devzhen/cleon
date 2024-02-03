@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import Header from "./components/Header";
 import LeftSide from "./components/LeftSide";
+import RightSide from "./components/RightSide";
 
 const font = Roboto({
   subsets: ["latin"],
@@ -19,6 +20,7 @@ export default function Home() {
         <Header />
       </header>
       <LeftSide />
+      <RightSide />
     </Main>
   );
 }

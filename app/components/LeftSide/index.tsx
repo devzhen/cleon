@@ -20,8 +20,10 @@ import {
   Button,
   LogoWrapper,
 } from "./styled";
+import ButtonsAddDelete from "../ButtonsAddDelete";
 
 export default function LeftSide() {
+  // Current draggable sticker
   const currentDragElementRef = useRef<HTMLDivElement>();
 
   // Current draggable sticker's parent
@@ -527,10 +529,12 @@ export default function LeftSide() {
         </Cell>
         <Cell $alignItems="start" $justifyContent="flex-end">
           <FloatingWrapper className="floating-wrapper" ref={buttonsWrapperRef}>
-            <div className="buttons-wrapper">
-              <Button onClick={setModalVisibility(true)}>+</Button>
-              <Button $marginTop={10}>-</Button>
-            </div>
+            <ButtonsAddDelete
+              add={setModalVisibility(true)}
+              remove={() => {}}
+              marginTop={22}
+              marginRight={16}
+            />
           </FloatingWrapper>
         </Cell>
         <Cell />
