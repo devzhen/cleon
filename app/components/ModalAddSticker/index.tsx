@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 
 import { BOARD_TYPE } from "@/app/constants";
+import { Sticker } from "@/app/data";
 
 import {
   Background,
@@ -10,7 +11,6 @@ import {
   ImageWrapper,
   BlurWrapper,
 } from "./styled";
-import { Sticker } from "@/app/data";
 
 type ModalAddStickerProps = {
   board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];

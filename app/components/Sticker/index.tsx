@@ -22,7 +22,7 @@ const Sticker = (props: StickerProps) => {
   const { sticker, onMouseDown, editSticker } = props;
 
   const date = parseISO(sticker.createdAt);
-  const dateFormatted = format(date, "LLLL d, yyyy");
+  const dateFormatted = format(date, "yyyy LLLL d, HH:mm:ss");
 
   return (
     <Container

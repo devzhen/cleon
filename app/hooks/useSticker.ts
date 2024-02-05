@@ -87,7 +87,7 @@ const useSticker = (props: UseStickerProps) => {
   useEffect(() => {
     const filtered = Object.values(stickersObj).reduce((acc, item) => {
       if(item.board === board) {
-        return assoc('id', item, acc);
+        return assoc(item.id, item, acc);
       }
 
       return acc;

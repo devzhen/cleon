@@ -491,7 +491,7 @@ export default function LeftSide() {
         <ModalAddSticker
           closeModal={closeModalHandler}
           createSticker={createSticker}
-          board={BOARD_TYPE.left}
+          board={BOARD_TYPE.right}
           sticker={editedSticker}
         />
       )}
