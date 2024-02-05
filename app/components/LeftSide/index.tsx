@@ -352,6 +352,9 @@ export default function LeftSide() {
     isModalOpen,
     setModalVisibility,
     stickers,
+    isDeleteMode,
+    toggleDeleteMode,
+    removeSticker,
   } = useSticker({
     board: BOARD_TYPE.left,
   });
@@ -422,7 +425,7 @@ export default function LeftSide() {
           <FloatingWrapper className="floating-wrapper" ref={buttonsWrapperRef}>
             <ButtonsAddDelete
               add={setModalVisibility(true)}
-              remove={() => {}}
+              remove={toggleDeleteMode}
               marginTop={22}
               marginRight={16}
             />
@@ -460,6 +463,8 @@ export default function LeftSide() {
             key={item.id}
             sticker={item}
             editSticker={editSticker(item)}
+            isDeleteMode={isDeleteMode}
+            removeSticker={removeSticker(item.id)}
           />
         ))}
       </Container>

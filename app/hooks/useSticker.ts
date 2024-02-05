@@ -1,5 +1,6 @@
 import assoc from "ramda/src/assoc";
 import ramdaClone from "ramda/src/clone";
+import omit from "ramda/src/omit";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 
@@ -17,6 +18,7 @@ const useSticker = (props: UseStickerProps) => {
 
   const [stickers, setStickers] = useState<Record<string, Sticker>>({});
   const [editedSticker, setEditedSticker] = useState<Sticker | null>(null);
+  const [isDeleteMode, setIsDeleteMode] = useState(false);
 
   const { isModalOpen, setModalVisibility, closeModal, openModal } = useModal();
 
@@ -57,6 +59,7 @@ const useSticker = (props: UseStickerProps) => {
     }
 
     setStickers(stickersClone);
+    setEditedSticker(null);
     closeModal();
   };
 
@@ -82,6 +85,21 @@ const useSticker = (props: UseStickerProps) => {
   };
 
   /**
+   * Toggle delete mode
+   */
+  const toggleDeleteMode = () => {
+    setIsDeleteMode(prev => !prev);
+  };
+
+  /**
+   * Remove sticker
+   */
+  const removeSticker = (id: string) => () => {
+    setStickers(prev => omit([id], prev));
+    setIsDeleteMode(false);
+  }; 
+
+  /**
    * Lifecycle
    */
   useEffect(() => {
@@ -95,7 +113,7 @@ const useSticker = (props: UseStickerProps) => {
 
     setStickers(filtered);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   return {
     closeModal,
@@ -106,7 +124,11 @@ const useSticker = (props: UseStickerProps) => {
     isModalOpen, 
     setModalVisibility, 
     stickers: Object.values(stickers),
+    isDeleteMode,
+    setIsDeleteMode,
+    toggleDeleteMode,
+    removeSticker,
   };
-}
+};
 
-export default useSticker
+export default useSticker;
