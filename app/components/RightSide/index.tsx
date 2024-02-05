@@ -82,7 +82,6 @@ export default function LeftSide() {
     dragArea1Ref.current.style.width = `${dragArea1Rect.width}px`;
     dragArea1Ref.current.style.height = `${dragArea1Rect.height}px`;
     dragArea1Ref.current.style.opacity = "0.5";
-    dragArea1Ref.current.style.background = "blue";
 
     const dragArea2Rect = {
       left: 0,
@@ -96,7 +95,6 @@ export default function LeftSide() {
     dragArea2Ref.current.style.width = `${dragArea2Rect.width}px`;
     dragArea2Ref.current.style.height = `${dragArea2Rect.height}px`;
     dragArea2Ref.current.style.opacity = "0.5";
-    dragArea2Ref.current.style.background = "green";
 
     const dragArea3Rect = {
       left: 0,
@@ -113,7 +111,6 @@ export default function LeftSide() {
     dragArea3Ref.current.style.width = `${dragArea3Rect.width}px`;
     dragArea3Ref.current.style.height = `${dragArea3Rect.height}px`;
     dragArea3Ref.current.style.opacity = "0.5";
-    dragArea3Ref.current.style.background = "yellow";
 
     const dragArea4Rect = {
       left: 0,
@@ -130,7 +127,6 @@ export default function LeftSide() {
     dragArea4Ref.current.style.width = `${dragArea4Rect.width}px`;
     dragArea4Ref.current.style.height = `${dragArea4Rect.height}px`;
     dragArea4Ref.current.style.opacity = "0.5";
-    dragArea4Ref.current.style.background = "lime";
 
     const dragArea5Rect = {
       left:
@@ -149,7 +145,6 @@ export default function LeftSide() {
     dragArea5Ref.current.style.width = `${dragArea5Rect.width}px`;
     dragArea5Ref.current.style.height = `${dragArea5Rect.height}px`;
     dragArea5Ref.current.style.opacity = "0.5";
-    dragArea5Ref.current.style.background = "red";
   };
 
   /**
@@ -377,6 +372,7 @@ export default function LeftSide() {
       correctPositionRelativeToParent();
       correctPositionRelativeToDragContainer();
     },
+    onMouseDownHandler: () => {},
   });
 
   /**

@@ -338,6 +338,7 @@ export default function LeftSide() {
 
       correctPositionRelativeToDragContainer();
     },
+    onMouseDownHandler: () => {},
   });
 
   /**

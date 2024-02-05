@@ -13,7 +13,7 @@ type UseStickerProps = {
 }
 
 const useSticker = (props: UseStickerProps) => {
-  const {board}  = props;
+  const { board }  = props;
 
   const [stickers, setStickers] = useState<Record<string, Sticker>>({});
   const [editedSticker, setEditedSticker] = useState<Sticker | null>(null);

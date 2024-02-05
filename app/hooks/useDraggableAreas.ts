@@ -5,10 +5,11 @@ type useDraggableAreasHookProps = {
   dragContainerRef: MutableRefObject<HTMLDivElement | null>,
   onMountHandler: () => void;
   onMouseMoveHandler: () => void;
+  onMouseDownHandler: () => void;
 }
 
 const useDraggableAreas = (props: useDraggableAreasHookProps) => {
-  let { currentDragElementRef, onMountHandler, onMouseMoveHandler, dragContainerRef } = props;
+  let { currentDragElementRef, onMountHandler, onMouseMoveHandler, dragContainerRef, onMouseDownHandler } = props;
 
   const clickOffsetRef = useRef({ x: 0, y: 0 });
 
@@ -35,6 +36,8 @@ const useDraggableAreas = (props: useDraggableAreasHookProps) => {
 
     clickOffsetRef.current.x = offsetX;
     clickOffsetRef.current.y = offsetY;
+
+    onMouseDownHandler();
   };
 
   /**
