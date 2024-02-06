@@ -31,7 +31,7 @@ const Sticker = (props: StickerProps) => {
   } = props;
 
   const date = parseISO(sticker.createdAt);
-  const dateFormatted = format(date, "yyyy LLLL d, HH:mm:ss");
+  const dateFormatted = format(date, "MM-dd-yyyy HH:mm:ss aa");
 
   return (
     <Container
@@ -40,6 +40,7 @@ const Sticker = (props: StickerProps) => {
       $left={sticker.left}
       className="sticker"
       $zIndex={zIndex}
+      data-id={sticker.id}
     >
       <Date>{dateFormatted}</Date>
       <ContentWrapper>

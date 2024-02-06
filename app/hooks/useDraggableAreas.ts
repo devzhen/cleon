@@ -5,7 +5,7 @@ type useDraggableAreasHookProps = {
   dragContainerRef: MutableRefObject<HTMLDivElement | null>,
   onMountHandler: () => void;
   onMouseMoveHandler: () => void;
-  onMouseDownHandler: () => void;
+  onMouseDownHandler: ({ zIndex, stickerId }: { zIndex: number, stickerId: string }) => void;
 }
 
 const useDraggableAreas = (props: useDraggableAreasHookProps) => {
@@ -37,7 +37,10 @@ const useDraggableAreas = (props: useDraggableAreasHookProps) => {
     clickOffsetRef.current.x = offsetX;
     clickOffsetRef.current.y = offsetY;
 
-    onMouseDownHandler();
+    const zIndex = parseInt(window.getComputedStyle(currentDragElementRef.current, null).zIndex);
+    const stickerId = currentDragElementRef.current.getAttribute('data-id') as string;
+
+    onMouseDownHandler({ zIndex, stickerId });
   };
 
   /**

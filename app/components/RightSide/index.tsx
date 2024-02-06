@@ -359,16 +359,17 @@ export default function LeftSide() {
    * Use sticker hook
    */
   const {
+    adjustZIndexes,
     closeModalHandler,
     createSticker,
-    editSticker,
     editedSticker,
+    editSticker,
+    isDeleteMode,
     isModalOpen,
+    removeSticker,
     setModalVisibility,
     stickers,
-    isDeleteMode,
     toggleDeleteMode,
-    removeSticker,
   } = useSticker({
     board: BOARD_TYPE.right,
   });
@@ -390,7 +391,7 @@ export default function LeftSide() {
       correctPositionRelativeToParent();
       correctPositionRelativeToDragContainer();
     },
-    onMouseDownHandler: () => {},
+    onMouseDownHandler: adjustZIndexes,
   });
 
   return (

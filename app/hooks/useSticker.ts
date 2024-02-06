@@ -105,6 +105,18 @@ const useSticker = (props: UseStickerProps) => {
   }; 
 
   /**
+   * Adjust z-indexes
+   */
+  const adjustZIndexes = ({ zIndex, stickerId }: { zIndex: number, stickerId: string }) => {
+    const sorted = Object.values(stickers).sort((a, b) => a.zIndex - b.zIndex);
+
+    for (let i = 0; i < sorted.length; i++) {
+      const sticker = sorted[i];
+      
+    }
+  };  
+
+  /**
    * Lifecycle
    */
   useEffect(() => {
@@ -125,18 +137,19 @@ const useSticker = (props: UseStickerProps) => {
   }, []);
 
   return {
+    adjustZIndexes,
     closeModal,
     closeModalHandler,
     createSticker,
-    editSticker,
     editedSticker,
+    editSticker,
+    isDeleteMode,
     isModalOpen, 
+    removeSticker,
+    setIsDeleteMode,
     setModalVisibility, 
     stickers: Object.values(stickers),
-    isDeleteMode,
-    setIsDeleteMode,
     toggleDeleteMode,
-    removeSticker,
   };
 };
 
