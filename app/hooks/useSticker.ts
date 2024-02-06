@@ -67,6 +67,8 @@ const useSticker = (props: UseStickerProps) => {
     setStickers(stickersClone);
     setEditedSticker(null);
     closeModal();
+
+    // TODO: send the data to a server
   };
 
   /**
@@ -105,6 +107,8 @@ const useSticker = (props: UseStickerProps) => {
 
     setStickers(prev => omit([id], prev));
     setIsDeleteMode(false);
+
+    // TODO: send the data to a server
   }; 
 
   /**
@@ -115,6 +119,8 @@ const useSticker = (props: UseStickerProps) => {
 
     const sticker = document.querySelector(`[data-id="${stickerId}"]`) as HTMLDivElement;
     sticker.style.zIndex = `${highestZIndex.current}`;
+
+    // TODO: send the data to a server
   };  
 
   /**

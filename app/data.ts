@@ -28,8 +28,8 @@ export const stickers = {
   },
   [thirdId]: {
     id: thirdId,
-    top: 140,
-    left: 250,
+    top: 566,
+    left: 544,
     createdAt: '2024-02-03T07:10:11.615Z',
     text: 'Draggable element 3',
     board: BOARD_TYPE.right,
@@ -37,8 +37,8 @@ export const stickers = {
   },
   [fourthId]: {
     id: fourthId,
-    top: 154,
-    left: 270,
+    top: 449,
+    left: 963,
     createdAt: '2024-02-03T07:10:11.615Z',
     text: 'Draggable element 4',
     board: BOARD_TYPE.right,
