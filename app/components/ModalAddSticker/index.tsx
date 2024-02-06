@@ -43,7 +43,7 @@ const ModalAddSticker = (props: ModalAddStickerProps) => {
   };
 
   return (
-    <Background>
+    <Background className="modal-bg">
       <Container>
         <span>Entrez votre nom</span>
         <TextArea onChange={onChangeHandler} value={text} />
