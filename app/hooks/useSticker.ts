@@ -6,6 +6,7 @@ import { v4 as uuid } from "uuid";
 
 import { BOARD_TYPE, DEFAULT_COORDS } from "@/app/constants";
 import { Sticker, stickers as stickersObj } from "@/app/data";
+import decreaseZIndexMoreThan from "@/app/utils/decreaseZIndexMoreThan";
 
 import useModal from "./useModal.hook";
 
@@ -99,7 +100,9 @@ const useSticker = (props: UseStickerProps) => {
   /**
    * Remove sticker
    */
-  const removeSticker = (id: string) => () => {
+  const removeSticker = (id: string, zIndex: number) => () => {
+    decreaseZIndexMoreThan(board, zIndex);
+
     setStickers(prev => omit([id], prev));
     setIsDeleteMode(false);
   }; 
@@ -107,7 +110,11 @@ const useSticker = (props: UseStickerProps) => {
   /**
    * Adjust z-indexes
    */
-  const adjustZIndexes = () => {
+  const adjustZIndexes = ({ zIndex, stickerId }: { zIndex: number, stickerId: string }) => {
+    decreaseZIndexMoreThan(board, zIndex);
+
+    const sticker = document.querySelector(`[data-id="${stickerId}"]`) as HTMLDivElement;
+    sticker.style.zIndex = `${highestZIndex.current}`;
   };  
 
   /**

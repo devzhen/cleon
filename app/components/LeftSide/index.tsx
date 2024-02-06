@@ -464,8 +464,9 @@ export default function LeftSide() {
             sticker={item}
             editSticker={editSticker(item)}
             isDeleteMode={isDeleteMode}
-            removeSticker={removeSticker(item.id)}
+            removeSticker={removeSticker(item.id, item.zIndex)}
             zIndex={item.zIndex}
+            board={BOARD_TYPE.left}
           />
         ))}
       </Container>

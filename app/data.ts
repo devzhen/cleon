@@ -5,6 +5,7 @@ import { BOARD_TYPE } from "./constants";
 const firstId = uuid();
 const secondId = uuid();
 const thirdId = uuid();
+const fourthId = uuid();
 
 export const stickers = {
   [firstId]: {
@@ -33,6 +34,15 @@ export const stickers = {
     text: 'Draggable element 3',
     board: BOARD_TYPE.right,
     zIndex: 2,
+  },
+  [fourthId]: {
+    id: fourthId,
+    top: 154,
+    left: 270,
+    createdAt: '2024-02-03T07:10:11.615Z',
+    text: 'Draggable element 4',
+    board: BOARD_TYPE.right,
+    zIndex: 3,
   },
 };
 

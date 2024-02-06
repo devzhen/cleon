@@ -1,6 +1,7 @@
 import { parseISO, format } from "date-fns";
 import Image from "next/image";
 
+import { BOARD_TYPE } from "@/app/constants";
 import { Sticker } from "@/app/data";
 
 import {
@@ -12,21 +13,23 @@ import {
 } from "./styled";
 
 type StickerProps = {
-  sticker: Sticker;
-  onMouseDown: VoidFunction;
+  board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
   editSticker: (e: MouseEvent) => void;
   isDeleteMode: boolean;
+  onMouseDown: VoidFunction;
   removeSticker: () => void;
+  sticker: Sticker;
   zIndex: number;
 };
 
 const Sticker = (props: StickerProps) => {
   const {
-    sticker,
-    onMouseDown,
+    board,
     editSticker,
     isDeleteMode,
+    onMouseDown,
     removeSticker,
+    sticker,
     zIndex,
   } = props;
 
@@ -41,6 +44,7 @@ const Sticker = (props: StickerProps) => {
       className="sticker"
       $zIndex={zIndex}
       data-id={sticker.id}
+      data-board={board}
     >
       <Date>{dateFormatted}</Date>
       <ContentWrapper>
