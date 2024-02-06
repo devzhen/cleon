@@ -9,7 +9,7 @@ type useDraggableAreasHookProps = {
 }
 
 const useDraggableAreas = (props: useDraggableAreasHookProps) => {
-  let { currentDragElementRef, onMountHandler, onMouseMoveHandler, dragContainerRef, onMouseDownHandler } = props;
+  const { currentDragElementRef, onMountHandler, onMouseMoveHandler, dragContainerRef, onMouseDownHandler } = props;
 
   const clickOffsetRef = useRef({ x: 0, y: 0 });
 

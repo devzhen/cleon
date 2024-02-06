@@ -107,13 +107,7 @@ const useSticker = (props: UseStickerProps) => {
   /**
    * Adjust z-indexes
    */
-  const adjustZIndexes = ({ zIndex, stickerId }: { zIndex: number, stickerId: string }) => {
-    const sorted = Object.values(stickers).sort((a, b) => a.zIndex - b.zIndex);
-
-    for (let i = 0; i < sorted.length; i++) {
-      const sticker = sorted[i];
-      
-    }
+  const adjustZIndexes = () => {
   };  
 
   /**

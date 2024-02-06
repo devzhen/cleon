@@ -1,4 +1,4 @@
-import getCoords from './getCoords'
+import getCoords from './getCoords';
 
 /**
  * Detect if a point in the element's path
