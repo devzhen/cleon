@@ -14,15 +14,21 @@ import {
 type StickerProps = {
   sticker: Sticker;
   onMouseDown: VoidFunction;
-  // eslint-disable-next-line unused-imports/no-unused-vars
   editSticker: (e: MouseEvent) => void;
   isDeleteMode: boolean;
   removeSticker: () => void;
+  zIndex: number;
 };
 
 const Sticker = (props: StickerProps) => {
-  const { sticker, onMouseDown, editSticker, isDeleteMode, removeSticker } =
-    props;
+  const {
+    sticker,
+    onMouseDown,
+    editSticker,
+    isDeleteMode,
+    removeSticker,
+    zIndex,
+  } = props;
 
   const date = parseISO(sticker.createdAt);
   const dateFormatted = format(date, "yyyy LLLL d, HH:mm:ss");
@@ -33,6 +39,7 @@ const Sticker = (props: StickerProps) => {
       $top={sticker.top}
       $left={sticker.left}
       className="sticker"
+      $zIndex={zIndex}
     >
       <Date>{dateFormatted}</Date>
       <ContentWrapper>

@@ -94,6 +94,6 @@ const useDraggableAreas = (props: useDraggableAreasHookProps) => {
     onMouseDown,
     onMouseMove,
   };
-}
+};
 
 export default useDraggableAreas;

@@ -356,6 +356,24 @@ export default function LeftSide() {
   };
 
   /**
+   * Use sticker hook
+   */
+  const {
+    closeModalHandler,
+    createSticker,
+    editSticker,
+    editedSticker,
+    isModalOpen,
+    setModalVisibility,
+    stickers,
+    isDeleteMode,
+    toggleDeleteMode,
+    removeSticker,
+  } = useSticker({
+    board: BOARD_TYPE.right,
+  });
+
+  /**
    * Use draggable areas hook
    */
   const { onMouseDown, onMouseMove } = useDraggableAreas({
@@ -373,24 +391,6 @@ export default function LeftSide() {
       correctPositionRelativeToDragContainer();
     },
     onMouseDownHandler: () => {},
-  });
-
-  /**
-   * Use sticker hook
-   */
-  const {
-    closeModalHandler,
-    createSticker,
-    editSticker,
-    editedSticker,
-    isModalOpen,
-    setModalVisibility,
-    stickers,
-    isDeleteMode,
-    toggleDeleteMode,
-    removeSticker,
-  } = useSticker({
-    board: BOARD_TYPE.right,
   });
 
   return (
@@ -489,6 +489,7 @@ export default function LeftSide() {
             editSticker={editSticker(item)}
             isDeleteMode={isDeleteMode}
             removeSticker={removeSticker(item.id)}
+            zIndex={item.zIndex}
           />
         ))}
       </Container>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div<{
   $top?: number;
   $left?: number;
+  $zIndex?: number;
 }>`
   position: absolute;
   width: 178px;
@@ -17,6 +18,7 @@ export const Container = styled.div<{
 
   ${(props) => props.$top && `top: ${props.$top}px`};
   ${(props) => props.$left && `left: ${props.$left}px`};
+  ${(props) => props.$zIndex && `z-index: ${props.$zIndex}`};
 `;
 
 export const Date = styled.div`

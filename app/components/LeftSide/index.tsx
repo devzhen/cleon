@@ -325,23 +325,6 @@ export default function LeftSide() {
   };
 
   /**
-   * Use draggable areas hook
-   */
-  const { onMouseDown, onMouseMove } = useDraggableAreas({
-    currentDragElementRef,
-    dragContainerRef,
-    onMountHandler: initDragAreas,
-    onMouseMoveHandler: () => {
-      detectParentContainer();
-
-      correctPositionRelativeToParent();
-
-      correctPositionRelativeToDragContainer();
-    },
-    onMouseDownHandler: () => {},
-  });
-
-  /**
    * Use sticker hook
    */
   const {
@@ -357,6 +340,23 @@ export default function LeftSide() {
     removeSticker,
   } = useSticker({
     board: BOARD_TYPE.left,
+  });
+
+  /**
+   * Use draggable areas hook
+   */
+  const { onMouseDown, onMouseMove } = useDraggableAreas({
+    currentDragElementRef,
+    dragContainerRef,
+    onMountHandler: initDragAreas,
+    onMouseMoveHandler: () => {
+      detectParentContainer();
+
+      correctPositionRelativeToParent();
+
+      correctPositionRelativeToDragContainer();
+    },
+    onMouseDownHandler: () => {},
   });
 
   return (
@@ -465,6 +465,7 @@ export default function LeftSide() {
             editSticker={editSticker(item)}
             isDeleteMode={isDeleteMode}
             removeSticker={removeSticker(item.id)}
+            zIndex={item.zIndex}
           />
         ))}
       </Container>

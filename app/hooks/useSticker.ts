@@ -1,7 +1,7 @@
 import assoc from "ramda/src/assoc";
 import ramdaClone from "ramda/src/clone";
 import omit from "ramda/src/omit";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
 
 import { BOARD_TYPE, DEFAULT_COORDS } from "@/app/constants";
@@ -15,6 +15,8 @@ type UseStickerProps = {
 
 const useSticker = (props: UseStickerProps) => {
   const { board }  = props;
+
+  const highestZIndex = useRef(0);
 
   const [stickers, setStickers] = useState<Record<string, Sticker>>({});
   const [editedSticker, setEditedSticker] = useState<Sticker | null>(null);
@@ -48,6 +50,8 @@ const useSticker = (props: UseStickerProps) => {
     } else {
       const newId = uuid();
 
+      const newZIndex = highestZIndex.current + 1;
+
       stickersClone[newId] = {
         id: newId,
         top: DEFAULT_COORDS.top,
@@ -55,6 +59,7 @@ const useSticker = (props: UseStickerProps) => {
         createdAt: new Date().toISOString(),
         text,
         board,
+        zIndex: newZIndex,
       };
     }
 
@@ -105,6 +110,10 @@ const useSticker = (props: UseStickerProps) => {
   useEffect(() => {
     const filtered = Object.values(stickersObj).reduce((acc, item) => {
       if(item.board === board) {
+        if (item.zIndex > highestZIndex.current) {
+          highestZIndex.current = item.zIndex;
+        }
+
         return assoc(item.id, item, acc);
       }
 
