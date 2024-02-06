@@ -41,7 +41,7 @@ export const ButtonsRow = styled.div`
   justify-content: flex-end;
   align-items: start;
 
-  img:nth-child(3) {
+  div:nth-child(2) > img:nth-child(2) {
     margin-left: 10px;
     margin-right: 10px;
   }

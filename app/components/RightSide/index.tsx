@@ -181,8 +181,8 @@ export default function LeftSide() {
     // The drag area 1
     if (currentDragElementParentRef.current === dragArea1Ref.current) {
       if (
-        stickerCoords.top > dragArea1Coords.top &&
-        stickerCoords.right >= dragArea1Coords.right
+        stickerCoords.top > dragArea2Coords.top &&
+        stickerCoords.right > dragArea1Coords.right
       ) {
         currentDragElementParentRef.current = dragArea2Ref.current;
       }
@@ -192,7 +192,7 @@ export default function LeftSide() {
     if (currentDragElementParentRef.current === dragArea2Ref.current) {
       if (
         stickerCoords.top < dragArea2Coords.top &&
-        stickerCoords.right < dragArea1Coords.right
+        stickerCoords.right <= dragArea1Coords.right
       ) {
         currentDragElementParentRef.current = dragArea1Ref.current;
       }
