@@ -23,13 +23,13 @@ export default function Header() {
 
 const HeaderTop = styled.div`
   height: 4px;
-  background-color: #363636;
+  background-color: ${(props) => props.theme.colors.headerTopBackground};
   width: 100%;
 `;
 
 const HeaderBottom = styled.div`
   height: 65px;
-  background-color: #f0cc46;
+  background-color: ${(props) => props.theme.colors.mainBackground};
   width: 100%;
 `;
 
@@ -41,7 +41,7 @@ const HeaderLogo = styled.div`
 const HeaderColumn = styled.div`
   width: 5px;
   height: 44px;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   position: relative;
   top: 7px;
   left: 19px;
@@ -54,7 +54,7 @@ const HeaderLogoTitleTop = styled.div`
 
   span {
     font-size: 18px;
-    color: #fff;
+    color: ${(props) => props.theme.colors.white};
     text-transform: uppercase;
   }
 `;
@@ -66,7 +66,7 @@ const HeaderLogoTitleBottom = styled.div`
 
   span {
     font-size: 18px;
-    color: #232323;
+    color: ${(props) => props.theme.colors.headerLogoTitle};
     text-transform: uppercase;
   }
 `;

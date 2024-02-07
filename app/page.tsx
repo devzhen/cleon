@@ -1,10 +1,11 @@
 "use client";
 import { Roboto } from "next/font/google";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
 import Header from "./components/Header";
 import LeftSide from "./components/LeftSide";
 import RightSide from "./components/RightSide";
+import theme from "./theme";
 
 const font = Roboto({
   subsets: ["latin"],
@@ -14,13 +15,15 @@ const font = Roboto({
 
 export default function Home() {
   return (
-    <Main className={font.className}>
-      <header>
-        <Header />
-      </header>
-      <LeftSide />
-      <RightSide />
-    </Main>
+    <ThemeProvider theme={theme}>
+      <Main className={font.className}>
+        <header>
+          <Header />
+        </header>
+        <LeftSide />
+        <RightSide />
+      </Main>
+    </ThemeProvider>
   );
 }
 

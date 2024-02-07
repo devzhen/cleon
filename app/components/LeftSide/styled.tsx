@@ -9,8 +9,8 @@ export const Container = styled.div`
   max-width: 638px;
   min-height: 863px;
   height: calc(100vh - 72px);
-  border: 3px solid #eb6529;
-  background-color: #e9ecf1;
+  border: 3px solid ${(props) => props.theme.colors.activeBoard};
+  background-color: ${(props) => props.theme.colors.boardBackground};
   z-index: 2;
 
   .drag-area {
@@ -69,9 +69,9 @@ export const Button = styled.button<{
   justify-content: center;
   width: 57px;
   height: 31px;
-  background-color: #f0cc46;
+  background-color: ${(props) => props.theme.colors.mainBackground};
   cursor: pointer;
-  color: #fff;
+  color: ${(props) => props.theme.colors.white};
   user-select: none;
   font-size: 30px;
   font-weight: 400;
@@ -81,7 +81,7 @@ export const Button = styled.button<{
   outline: none;
 
   &:active {
-    box-shadow: 2px 2px 5px #f0cc46;
+    box-shadow: 2px 2px 5px ${(props) => props.theme.colors.mainBackground};
   }
 
   ${(props) => props.$marginTop && `margin-top: ${props.$marginTop}px`};
@@ -95,7 +95,7 @@ export const LogoWrapper = styled.div`
 
   span {
     margin-left: 8px;
-    color: #eb6529;
+    color: ${(props) => props.theme.colors.activeBoard};
     text-transform: uppercase;
     font-size: 28px;
   }

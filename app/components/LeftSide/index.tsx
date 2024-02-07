@@ -6,6 +6,7 @@ import useDraggableAreas from "@/app/hooks/useDraggableAreas";
 import useSticker from "@/app/hooks/useSticker";
 import getCoords from "@/app/utils/getCoords";
 import isPointInPath from "@/app/utils/isPointInPath";
+import onInteractHandler from "@/app/utils/onInteractHandler";
 
 import ButtonsAddDelete from "../ButtonsAddDelete";
 import ModalAddSticker from "../ModalAddSticker";
@@ -328,18 +329,20 @@ export default function LeftSide() {
    * Use sticker hook
    */
   const {
+    adjustZIndexes,
     closeModalHandler,
     createSticker,
-    editSticker,
     editedSticker,
+    editSticker,
+    isDeleteMode,
     isModalOpen,
+    removeSticker,
     setModalVisibility,
     stickers,
-    isDeleteMode,
     toggleDeleteMode,
-    removeSticker,
   } = useSticker({
     board: BOARD_TYPE.left,
+    onInteract: onInteractHandler,
   });
 
   /**
@@ -356,7 +359,7 @@ export default function LeftSide() {
 
       correctPositionRelativeToDragContainer();
     },
-    onMouseDownHandler: () => {},
+    onMouseDownHandler: adjustZIndexes,
   });
 
   return (
@@ -365,6 +368,7 @@ export default function LeftSide() {
         className="sticker-container"
         onMouseMove={onMouseMove as VoidFunction}
         ref={dragContainerRef}
+        data-board={BOARD_TYPE.left}
       >
         <div className="drag-area" ref={dragArea1Ref} />
         <div className="drag-area" ref={dragArea2Ref} />

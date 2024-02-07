@@ -8,9 +8,9 @@ export const Container = styled.div`
   height: calc(100vh - 72px);
   min-width: 1152px;
   min-height: 863px;
-  border: 3px solid #bfc3ca;
+  border: 3px solid ${(props) => props.theme.colors.notActiveBoard};
   margin-left: 3px;
-  background-color: #e9ecf1;
+  background-color: ${(props) => props.theme.colors.boardBackground};
   z-index: 2;
 
   img {
@@ -30,7 +30,7 @@ export const Header = styled.div`
 
   span {
     margin-left: 10px;
-    color: #7b7b7b;
+    color: ${(props) => props.theme.colors.headerRightSide};
     font-size: 28px;
     text-transform: uppercase;
   }

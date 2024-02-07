@@ -8,7 +8,7 @@ const decreaseZIndexMoreThan = (board: typeof BOARD_TYPE[keyof typeof BOARD_TYPE
     
     const stickerZIndex = parseInt(window.getComputedStyle(sticker, null).zIndex);
 
-    if (stickerZIndex > zIndex) {
+    if (stickerZIndex >= zIndex) {
       sticker.style.zIndex = `${stickerZIndex - 1}`;
     }
   }

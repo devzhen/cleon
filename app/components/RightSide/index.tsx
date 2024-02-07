@@ -6,6 +6,7 @@ import useDraggableAreas from "@/app/hooks/useDraggableAreas";
 import useSticker from "@/app/hooks/useSticker";
 import getCoords from "@/app/utils/getCoords";
 import isPointInPath from "@/app/utils/isPointInPath";
+import onInteractHandler from "@/app/utils/onInteractHandler";
 
 import ButtonsAddDelete from "../ButtonsAddDelete";
 import ModalAddSticker from "../ModalAddSticker";
@@ -372,6 +373,7 @@ export default function LeftSide() {
     toggleDeleteMode,
   } = useSticker({
     board: BOARD_TYPE.right,
+    onInteract: onInteractHandler,
   });
 
   /**
@@ -400,6 +402,7 @@ export default function LeftSide() {
         className="sticker-container"
         ref={dragContainerRef}
         onMouseMove={onMouseMove as VoidFunction}
+        data-board={BOARD_TYPE.right}
       >
         <div className="drag-area drag-area-1" ref={dragArea1Ref} />
         <div className="drag-area drag-area-2" ref={dragArea2Ref} />

@@ -12,10 +12,11 @@ import useModal from "./useModal.hook";
 
 type UseStickerProps = {
   board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
+  onInteract: (board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE]) => void,
 }
 
 const useSticker = (props: UseStickerProps) => {
-  const { board }  = props;
+  const { board, onInteract }  = props;
 
   const highestZIndex = useRef(0);
 
@@ -97,6 +98,8 @@ const useSticker = (props: UseStickerProps) => {
    */
   const toggleDeleteMode = () => {
     setIsDeleteMode(prev => !prev);
+
+    onInteract(board);
   };
 
   /**
@@ -120,8 +123,19 @@ const useSticker = (props: UseStickerProps) => {
     const sticker = document.querySelector(`[data-id="${stickerId}"]`) as HTMLDivElement;
     sticker.style.zIndex = `${highestZIndex.current}`;
 
+    onInteract(board);
+
     // TODO: send the data to a server
   };  
+
+  /**
+   * Lifecycle
+   */
+  useEffect(() => {
+    if (isModalOpen) {
+      onInteract(board);
+    }
+  }, [board, isModalOpen, onInteract]);
 
   /**
    * Lifecycle

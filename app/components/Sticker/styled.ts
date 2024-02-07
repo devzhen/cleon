@@ -9,7 +9,7 @@ export const Container = styled.div<{
   width: 178px;
   height: 181px;
   padding: 8px; 
-  background-color: #fff8c8;
+  background-color: ${(props) => props.theme.colors.modalBackground};
   border: 1px solid white;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
   z-index: 2;
@@ -22,7 +22,7 @@ export const Container = styled.div<{
 `;
 
 export const Date = styled.div`
-  color: #979797;
+  color: ${(props) => props.theme.colors.dateColor};
   font-size: 10px;
   margin-left: 7px;
   margin-bottom: 5px;
@@ -30,13 +30,13 @@ export const Date = styled.div`
 
 export const ContentWrapper = styled.div`
   height: 124px;
-  border: 1px solid #dfe2e7;
+  border: 1px solid ${(props) => props.theme.colors.textAreaBorder};
   overflow: hidden;
   outline: none;
 `;
 
 export const Content = styled.span`
-  color: #2e2e2e;
+  color: ${(props) => props.theme.colors.textAreaColor};
   font-size: 13px;
   margin-top: 10px;
   margin-left: 10px;

@@ -20,7 +20,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #fff8c8;
+  background-color: ${props => props.theme.colors.modalBackground};
   border: 1px solid white;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
   z-index: 10;
@@ -49,9 +49,9 @@ export const ImageWrapper = styled.div`
 export const TextArea = styled.textarea`
   width: 393px;
   height: 290px;
-  background-color: #fffde6;
-  border: 1px solid #dfe2e7;
-  color: #2e2e2e;
+  background-color: ${props => props.theme.colors.textAreaBackground};
+  border: 1px solid ${props => props.theme.colors.textAreaBorder};
+  color:  ${props => props.theme.colors.textAreaColor};
   font-size: 18px;
   padding: 13px;
   line-height: 1.2;
