@@ -1,16 +1,11 @@
 import { parseISO, format } from "date-fns";
 import Image from "next/image";
+import { useRef } from "react";
 
 import { BOARD_TYPE } from "@/app/constants";
 import { Sticker } from "@/app/data";
 
-import {
-  Container,
-  Date,
-  Content,
-  ContentWrapper,
-  ImageWrapper,
-} from "./styled";
+import styles from "./Sticker.module.css";
 
 type StickerProps = {
   board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
@@ -19,7 +14,6 @@ type StickerProps = {
   onMouseDown: VoidFunction;
   removeSticker: () => void;
   sticker: Sticker;
-  zIndex: number;
 };
 
 const Sticker = (props: StickerProps) => {
@@ -30,27 +24,31 @@ const Sticker = (props: StickerProps) => {
     onMouseDown,
     removeSticker,
     sticker,
-    zIndex,
   } = props;
+
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const date = parseISO(sticker.createdAt);
   const dateFormatted = format(date, "MM-dd-yyyy HH:mm:ss aa");
 
   return (
-    <Container
+    <div
+      className={`${styles.container} sticker`}
       onMouseDown={onMouseDown}
-      $top={sticker.top}
-      $left={sticker.left}
-      className="sticker"
-      $zIndex={zIndex}
       data-id={sticker.id}
       data-board={board}
+      ref={containerRef}
+      style={{
+        top: sticker.top,
+        left: sticker.left,
+        zIndex: sticker.zIndex,
+      }}
     >
-      <Date>{dateFormatted}</Date>
-      <ContentWrapper>
-        <Content>{sticker.text}</Content>
-      </ContentWrapper>
-      <ImageWrapper>
+      <span data-role="date">{dateFormatted}</span>
+      <div data-role="content-wrapper">
+        <span>{sticker.text}</span>
+      </div>
+      <div data-role="image-wrapper">
         {!isDeleteMode && (
           <Image
             src="/reg.png"
@@ -71,8 +69,8 @@ const Sticker = (props: StickerProps) => {
             onClick={removeSticker as VoidFunction}
           />
         )}
-      </ImageWrapper>
-    </Container>
+      </div>
+    </div>
   );
 };
 

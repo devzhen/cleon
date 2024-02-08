@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -12,13 +14,7 @@ import ButtonsAddDelete from "../ButtonsAddDelete";
 import ModalAddSticker from "../ModalAddSticker";
 import StickerComponent from "../Sticker";
 
-import {
-  Container,
-  Cell,
-  FloatingWrapper,
-  Banner,
-  LogoWrapper,
-} from "./styled";
+import styles from "./LeftSide.module.css";
 
 export default function LeftSide() {
   // Current draggable sticker
@@ -364,22 +360,18 @@ export default function LeftSide() {
 
   return (
     <>
-      <Container
-        className="sticker-container"
+      <div
+        className={`${styles.leftSide} sticker-container`}
         onMouseMove={onMouseMove as VoidFunction}
         ref={dragContainerRef}
         data-board={BOARD_TYPE.left}
       >
-        <div className="drag-area" ref={dragArea1Ref} />
-        <div className="drag-area" ref={dragArea2Ref} />
-        <div className="drag-area" ref={dragArea3Ref} />
-        <Cell>
-          <FloatingWrapper
-            className="floating-wrapper"
-            $paddingTop={80}
-            ref={leftBannerWrapperRef}
-          >
-            <Banner $marginLeft={10}>
+        <div data-role="drag-area" ref={dragArea1Ref} />
+        <div data-role="drag-area" ref={dragArea2Ref} />
+        <div data-role="drag-area" ref={dragArea3Ref} />
+        <div className={styles.floatingWrapper} ref={leftBannerWrapperRef}>
+          <div className={styles.leftBannerWrapper}>
+            <div className={styles.banner}>
               <Image
                 src="/banner1.jpeg"
                 width={185}
@@ -388,8 +380,8 @@ export default function LeftSide() {
                 priority
                 draggable={false}
               />
-            </Banner>
-            <Banner $marginTop={10} $marginLeft={10}>
+            </div>
+            <div className={styles.banner}>
               <Image
                 src="/banner2.jpeg"
                 width={185}
@@ -398,8 +390,8 @@ export default function LeftSide() {
                 draggable={false}
                 priority
               />
-            </Banner>
-            <Banner $marginTop={10} $marginLeft={10}>
+            </div>
+            <div className={styles.banner}>
               <Image
                 src="/banner3.jpeg"
                 width={185}
@@ -408,12 +400,12 @@ export default function LeftSide() {
                 draggable={false}
                 priority
               />
-            </Banner>
-          </FloatingWrapper>
-        </Cell>
-        <Cell $justifyContent="center" $alignItems="start">
-          <FloatingWrapper className="floating-wrapper" ref={logoWrapperRef}>
-            <LogoWrapper>
+            </div>
+          </div>
+        </div>
+        <div className={styles.logoWrapper}>
+          <div className="floating-wrapper" ref={logoWrapperRef}>
+            <div>
               <Image
                 src="/gerb-1.png"
                 width={39}
@@ -422,35 +414,27 @@ export default function LeftSide() {
                 draggable={false}
               />
               <span>sÈcuritÈ</span>
-            </LogoWrapper>
-          </FloatingWrapper>
-        </Cell>
-        <Cell $alignItems="start" $justifyContent="flex-end">
-          <FloatingWrapper className="floating-wrapper" ref={buttonsWrapperRef}>
+            </div>
+          </div>
+        </div>
+        <div className={styles.buttonsWrapper}>
+          <div className={styles.floatingWrapper} ref={buttonsWrapperRef}>
             <ButtonsAddDelete
               add={setModalVisibility(true)}
               remove={toggleDeleteMode}
               marginTop={22}
               marginRight={16}
             />
-          </FloatingWrapper>
-        </Cell>
-        <Cell />
-        <Cell />
-        <Cell />
-        <Cell />
-        <Cell />
-        <Cell $alignItems="end" $justifyContent="flex-end">
-          <FloatingWrapper
-            className="floating-wrapper"
-            ref={lastBannerWrapperRef}
-          >
-            <Banner
-              $marginRight={10}
-              $marginBottom={10}
-              $width={129}
-              $height={188}
-            >
+          </div>
+        </div>
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div className={styles.bottomBannerWrapper}>
+          <div className={styles.floatingWrapper} ref={lastBannerWrapperRef}>
+            <div className={`${styles.banner} ${styles.bottomBanner}`}>
               <Image
                 src="/banner4.jpeg"
                 width={129}
@@ -458,9 +442,9 @@ export default function LeftSide() {
                 alt="Banner 4"
                 draggable={false}
               />
-            </Banner>
-          </FloatingWrapper>
-        </Cell>
+            </div>
+          </div>
+        </div>
         {stickers.map((item) => (
           <StickerComponent
             onMouseDown={onMouseDown as VoidFunction}
@@ -469,11 +453,10 @@ export default function LeftSide() {
             editSticker={editSticker(item)}
             isDeleteMode={isDeleteMode}
             removeSticker={removeSticker(item.id, item.zIndex)}
-            zIndex={item.zIndex}
             board={BOARD_TYPE.left}
           />
         ))}
-      </Container>
+      </div>
       {isModalOpen && (
         <ModalAddSticker
           closeModal={closeModalHandler}

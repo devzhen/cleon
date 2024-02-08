@@ -1,0 +1,36 @@
+.container {
+  --margin-top: 0;
+  --margin-right: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: var(--margin-top);
+  margin-right: var(--margin-right);
+}
+
+.container button:active {
+  box-shadow: 2px 2px 5px var(--color-main-background);
+}
+
+.container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 57px;
+  height: 31px;
+  background-color: var(--color-main-background);
+  cursor: pointer;
+  color: #fff;
+  user-select: none;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+}
+
+.container button:first-child {
+  margin-bottom: 10px;
+}

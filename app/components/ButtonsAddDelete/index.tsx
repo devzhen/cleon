@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-import { Button, Container } from "./styled";
+import styles from "./ButtonsAddDelete.module.css";
 
 type ButtonAddDeleteProps = {
   add: () => void;
@@ -11,15 +11,20 @@ type ButtonAddDeleteProps = {
 
 const ButtonAddDelete = forwardRef<HTMLDivElement, ButtonAddDeleteProps>(
   (props, ref) => {
-    const { add, remove, marginRight, marginTop } = props;
+    const { add, remove, marginTop, marginRight } = props;
 
     return (
-      <Container $marginRight={marginRight} $marginTop={marginTop} ref={ref}>
-        <Button onClick={add}>+</Button>
-        <Button onClick={remove} $marginTop={10}>
-          -
-        </Button>
-      </Container>
+      <div
+        className={styles.container}
+        ref={ref}
+        style={{
+          marginTop: marginTop || 0,
+          marginRight: marginRight || 0,
+        }}
+      >
+        <button onClick={add}>+</button>
+        <button onClick={remove}>-</button>
+      </div>
     );
   }
 );

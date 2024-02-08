@@ -1,0 +1,79 @@
+.leftSide {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  min-width: 638px;
+  max-width: 638px;
+  min-height: 863px;
+  height: calc(100vh - 72px);
+  border: 3px solid var(--color-active-board);
+  background-color: var(--color-board-background);
+  z-index: 2;
+}
+
+.leftSide [data-role="drag-area"] {
+  position: absolute;
+}
+
+.leftBannerWrapper {
+  padding-top: 80px;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 10px;
+}
+
+.logoWrapper div {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.logoWrapper div span {
+  margin-left: 8px;
+  color: var(--color-active-board);
+  text-transform: uppercase;
+  font-size: 28px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+}
+
+.bottomBannerWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.floatingWrapper {
+  width: fit-content;
+  height: fit-content;
+}
+
+.banner {
+  width: 185px;
+  height: 132px;
+  margin-left: 10px;
+  user-select: none;
+}
+
+.banner img {
+  cursor: pointer;
+}
+
+.leftSide .banner:nth-child(2), .leftSide .banner:nth-child(3) {
+  margin-top: 10px;
+}
+
+.bottomBanner  {
+  margin: 0 10px 10px 0;
+  width: 129px;
+  height: 188px;
+}

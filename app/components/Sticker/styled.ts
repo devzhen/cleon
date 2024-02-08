@@ -9,7 +9,7 @@ export const Container = styled.div<{
   width: 178px;
   height: 181px;
   padding: 8px; 
-  background-color: ${(props) => props.theme.colors.modalBackground};
+  background-color: ${(props) => props.theme?.colors?.modalBackground};
   border: 1px solid white;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
   z-index: 2;
@@ -22,7 +22,7 @@ export const Container = styled.div<{
 `;
 
 export const Date = styled.div`
-  color: ${(props) => props.theme.colors.dateColor};
+  color: ${(props) => props.theme?.colors?.dateColor};
   font-size: 10px;
   margin-left: 7px;
   margin-bottom: 5px;
@@ -30,13 +30,13 @@ export const Date = styled.div`
 
 export const ContentWrapper = styled.div`
   height: 124px;
-  border: 1px solid ${(props) => props.theme.colors.textAreaBorder};
+  border: 1px solid ${(props) => props.theme?.colors?.textAreaBorder};
   overflow: hidden;
   outline: none;
 `;
 
 export const Content = styled.span`
-  color: ${(props) => props.theme.colors.textAreaColor};
+  color: ${(props) => props.theme?.colors?.textAreaColor};
   font-size: 13px;
   margin-top: 10px;
   margin-left: 10px;

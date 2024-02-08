@@ -1,3 +1,16 @@
+:root {
+  --color-active-board: #eb6529;
+  --color-not-active-board: #bfc3ca;
+  --color-main-background: #f0cc46;
+  --color-board-background: #e9ecf1;
+  --color-header-right-side: #7b7b7b;
+  --color-modal-background: #fff8c8;
+  --color-text-area-background: #fffde6;
+  --color-text-area-border: #dfe2e7;
+  --color-text-area-color: #2e2e2e;
+  --color-date-color: #979797;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -7,4 +20,12 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: 72px 1fr;
+  grid-template-columns: 638px 1fr;
+  height: 100dvh;
+  width: 100%;
 }

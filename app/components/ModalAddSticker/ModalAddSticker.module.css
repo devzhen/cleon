@@ -1,0 +1,60 @@
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+
+.container {
+  width: 421px;
+  height: 428px;
+  padding: 18px 14px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-modal-background);
+  border: 1px solid white;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  z-index: 10;
+}
+
+.container div[data-role="image-wrapper"] {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container div[data-role="image-wrapper"] img {
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+}
+
+.container div[data-role="image-wrapper"] img:nth-child(1) {
+  margin-right: 10px;
+}
+
+.container textarea{
+  width: 393px;
+  height: 290px;
+  background-color: var(--color-text-area-background);
+  border: 1px solid var(--color-text-area-border);
+  color:  var(--color-text-area-color);
+  font-size: 18px;
+  padding: 13px;
+  line-height: 1.2;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+}
+
+.container div[data-role="blur-wrapper"] {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}

@@ -4,13 +4,7 @@ import { ChangeEvent, useState } from "react";
 import { BOARD_TYPE } from "@/app/constants";
 import { Sticker } from "@/app/data";
 
-import {
-  Background,
-  Container,
-  TextArea,
-  ImageWrapper,
-  BlurWrapper,
-} from "./styled";
+import styles from "./ModalAddSticker.module.css";
 
 type ModalAddStickerProps = {
   board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
@@ -42,12 +36,23 @@ const ModalAddSticker = (props: ModalAddStickerProps) => {
     setText(text);
   };
 
+  const imageCheck = (
+    <Image
+      src="/check.png"
+      width={52}
+      height={52}
+      alt="Picture of the author"
+      draggable={false}
+      onClick={addStickerHandler}
+    />
+  );
+
   return (
-    <Background className="modal-bg">
-      <Container>
+    <div className={`${styles.background} modal-bg`}>
+      <div className={styles.container}>
         <span>Entrez votre nom</span>
-        <TextArea onChange={onChangeHandler} value={text} />
-        <ImageWrapper>
+        <textarea onChange={onChangeHandler} value={text} />
+        <div data-role="image-wrapper">
           <Image
             src="/cross.png"
             width={52}
@@ -56,19 +61,11 @@ const ModalAddSticker = (props: ModalAddStickerProps) => {
             draggable={false}
             onClick={closeModal}
           />
-          <BlurWrapper $isDisabled={!text}>
-            <Image
-              src="/check.png"
-              width={52}
-              height={52}
-              alt="Picture of the author"
-              draggable={false}
-              onClick={addStickerHandler}
-            />
-          </BlurWrapper>
-        </ImageWrapper>
-      </Container>
-    </Background>
+          {!text && <div data-role="blur-wrapper">{imageCheck}</div>}
+          {text && <div>{imageCheck}</div>}
+        </div>
+      </div>
+    </div>
   );
 };
 

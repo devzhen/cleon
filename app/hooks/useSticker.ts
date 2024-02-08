@@ -132,6 +132,15 @@ const useSticker = (props: UseStickerProps) => {
    * Lifecycle
    */
   useEffect(() => {
+    if (isModalOpen && isDeleteMode) {
+      setIsDeleteMode(false);
+    }
+  }, [isModalOpen, isDeleteMode]);
+
+  /**
+   * Lifecycle
+   */
+  useEffect(() => {
     if (isModalOpen) {
       onInteract(board);
     }
