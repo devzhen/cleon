@@ -23,14 +23,14 @@
 .logoWrapper {
   display: flex;
   justify-content: center;
-  align-items: start;
-  padding-top: 10px;
+  align-items: flex-start;
 }
 
 .logoWrapper div {
   display: flex;
   align-items: center;
   user-select: none;
+  margin-top: 8px;
 }
 
 .logoWrapper div span {
@@ -43,13 +43,13 @@
 .buttonsWrapper {
   display: flex;
   justify-content: flex-end;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .bottomBannerWrapper {
   display: flex;
   justify-content: flex-end;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .floatingWrapper {

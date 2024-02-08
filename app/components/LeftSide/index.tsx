@@ -404,7 +404,7 @@ export default function LeftSide() {
           </div>
         </div>
         <div className={styles.logoWrapper}>
-          <div className="floating-wrapper" ref={logoWrapperRef}>
+          <div className={styles.floatingWrapper} ref={logoWrapperRef}>
             <div>
               <Image
                 src="/gerb-1.png"

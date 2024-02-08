@@ -1,6 +1,5 @@
 import { parseISO, format } from "date-fns";
 import Image from "next/image";
-import { useRef } from "react";
 
 import { BOARD_TYPE } from "@/app/constants";
 import { Sticker } from "@/app/data";
@@ -26,8 +25,6 @@ const Sticker = (props: StickerProps) => {
     sticker,
   } = props;
 
-  const containerRef = useRef<HTMLDivElement>(null);
-
   const date = parseISO(sticker.createdAt);
   const dateFormatted = format(date, "MM-dd-yyyy HH:mm:ss aa");
 
@@ -37,7 +34,6 @@ const Sticker = (props: StickerProps) => {
       onMouseDown={onMouseDown}
       data-id={sticker.id}
       data-board={board}
-      ref={containerRef}
       style={{
         top: sticker.top,
         left: sticker.left,
