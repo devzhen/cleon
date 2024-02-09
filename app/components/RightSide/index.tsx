@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -12,7 +14,7 @@ import ButtonsAddDelete from "../ButtonsAddDelete";
 import ModalAddSticker from "../ModalAddSticker";
 import StickerComponent from "../Sticker";
 
-import { Container, Header, ButtonsRow, BannersRow } from "./styled";
+import styles from "./RightSide.module.css";
 
 export default function LeftSide() {
   // Current draggable sticker
@@ -398,18 +400,18 @@ export default function LeftSide() {
 
   return (
     <>
-      <Container
-        className="sticker-container"
+      <div
+        className={`${styles.rightSide} sticker-container`}
         ref={dragContainerRef}
         onMouseMove={onMouseMove as VoidFunction}
         data-board={BOARD_TYPE.right}
       >
-        <div className="drag-area drag-area-1" ref={dragArea1Ref} />
-        <div className="drag-area drag-area-2" ref={dragArea2Ref} />
-        <div className="drag-area drag-area-3" ref={dragArea3Ref} />
-        <div className="drag-area drag-area-4" ref={dragArea4Ref} />
-        <div className="drag-area drag-area-5" ref={dragArea5Ref} />
-        <Header ref={headerRef}>
+        <div data-role="drag-area" ref={dragArea1Ref} />
+        <div data-role="drag-area" ref={dragArea2Ref} />
+        <div data-role="drag-area" ref={dragArea3Ref} />
+        <div data-role="drag-area" ref={dragArea4Ref} />
+        <div data-role="drag-area" ref={dragArea5Ref} />
+        <div data-role="header" ref={headerRef}>
           <Image
             src="/scrin-3-graf.png"
             width={47}
@@ -419,8 +421,8 @@ export default function LeftSide() {
             ref={logoRef}
           />
           <span>vie de l’uet</span>
-        </Header>
-        <ButtonsRow>
+        </div>
+        <div data-role="buttons-row">
           <ButtonsAddDelete
             add={setModalVisibility(true)}
             remove={toggleDeleteMode}
@@ -445,9 +447,9 @@ export default function LeftSide() {
               priority
             />
           </div>
-        </ButtonsRow>
+        </div>
         <div />
-        <BannersRow>
+        <div data-role="banners-row">
           <div ref={bottomLeftImagesRef}>
             <Image
               src="/scrin3-a3-right3.jpg"
@@ -484,7 +486,7 @@ export default function LeftSide() {
               priority
             />
           </div>
-        </BannersRow>
+        </div>
         {stickers.map((item) => (
           <StickerComponent
             onMouseDown={onMouseDown as VoidFunction}
@@ -496,7 +498,7 @@ export default function LeftSide() {
             board={BOARD_TYPE.right}
           />
         ))}
-      </Container>
+      </div>
       {isModalOpen && (
         <ModalAddSticker
           closeModal={closeModalHandler}

@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google";
 
 import Header from "./components/Header";
 import LeftSide from "./components/LeftSide";
+import RightSide from "./components/RightSide";
 
 const font = Roboto({
   subsets: ["latin"],
@@ -14,7 +15,7 @@ export default function Home() {
     <main className={`main ${font.className}`}>
       <Header />
       <LeftSide />
-      {/* <RightSide /> */}
+      <RightSide />
     </main>
   );
 }
