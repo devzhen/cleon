@@ -66,11 +66,11 @@ export default function LeftSide(props: LeftSideProps) {
 
     const logoWrapperRect = logoWrapperRef.current.getBoundingClientRect();
 
-    const lastBannerWrapperRect =
-      lastBannerWrapperRef.current.getBoundingClientRect();
-
     const buttonsWrapperRect =
       buttonsWrapperRef.current.getBoundingClientRect();
+
+    const lastBannerWrapperRect =
+      lastBannerWrapperRef.current.getBoundingClientRect();
 
     const BORDER_WIDTH = 3;
 
