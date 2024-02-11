@@ -1,13 +1,12 @@
 import { parseISO, format } from "date-fns";
 import Image from "next/image";
 
-import { BOARD_TYPE } from "@/app/constants";
-import { Sticker } from "@/app/data";
+import { Sticker, BoardType } from "@/types";
 
 import styles from "./Sticker.module.css";
 
 type StickerProps = {
-  board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
+  board: BoardType;
   editSticker: (e: MouseEvent) => void;
   isDeleteMode: boolean;
   onMouseDown: VoidFunction;

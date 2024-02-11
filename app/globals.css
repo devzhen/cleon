@@ -29,3 +29,11 @@ body {
   height: 100dvh;
   width: 100%;
 }
+
+.boardActive {
+  border-color: var(--color-active-board) !important;
+}
+
+.boardNotActive {
+  border-color: var(--color-not-active-board) !important;
+}

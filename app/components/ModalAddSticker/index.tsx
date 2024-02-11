@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 
-import { BOARD_TYPE } from "@/app/constants";
-import { Sticker } from "@/app/data";
+import { Sticker, BoardType } from "@/types";
 
 import styles from "./ModalAddSticker.module.css";
 
 type ModalAddStickerProps = {
-  board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
+  board: BoardType;
   closeModal: () => void;
   createSticker: ({
     text,
@@ -15,7 +14,7 @@ type ModalAddStickerProps = {
     id,
   }: {
     text: string;
-    board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
+    board: BoardType;
     id: string | undefined;
   }) => void;
   sticker: Sticker | null;

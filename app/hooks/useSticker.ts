@@ -1,26 +1,26 @@
-import assoc from "ramda/src/assoc";
 import ramdaClone from "ramda/src/clone";
 import omit from "ramda/src/omit";
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
 
-import { BOARD_TYPE, DEFAULT_COORDS } from "@/app/constants";
-import { Sticker, stickers as stickersObj } from "@/app/data";
-import decreaseZIndexMoreThan from "@/app/utils/decreaseZIndexMoreThan";
+import { DEFAULT_STICKER_POS } from "@/constants";
+import type { Sticker, BoardType } from '@/types';
+import decreaseZIndexMoreThan from "@/utils/decreaseZIndexMoreThan";
 
 import useModal from "./useModal.hook";
 
 type UseStickerProps = {
-  board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
-  onInteract: (board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE]) => void,
+  board: BoardType;
+  onInteract: (board: BoardType) => void,
+  initialStickers: Record<string, Sticker>;
 }
 
 const useSticker = (props: UseStickerProps) => {
-  const { board, onInteract }  = props;
+  const { board, onInteract, initialStickers }  = props;
 
   const highestZIndex = useRef(0);
 
-  const [stickers, setStickers] = useState<Record<string, Sticker>>({});
+  const [stickers, setStickers] = useState<Record<string, Sticker>>(initialStickers);
   const [editedSticker, setEditedSticker] = useState<Sticker | null>(null);
   const [isDeleteMode, setIsDeleteMode] = useState(false);
 
@@ -35,7 +35,7 @@ const useSticker = (props: UseStickerProps) => {
     id,
   }: {
     text: string;
-    board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE];
+    board: BoardType;
     id: string | undefined;
   }) => {
     const stickersClone = ramdaClone(stickers);
@@ -56,8 +56,8 @@ const useSticker = (props: UseStickerProps) => {
 
       stickersClone[newId] = {
         id: newId,
-        top: DEFAULT_COORDS.top,
-        left: DEFAULT_COORDS.left,
+        top: DEFAULT_STICKER_POS.top,
+        left: DEFAULT_STICKER_POS.left,
         createdAt: new Date().toISOString(),
         text,
         board,
@@ -150,21 +150,12 @@ const useSticker = (props: UseStickerProps) => {
    * Lifecycle
    */
   useEffect(() => {
-    const filtered = Object.values(stickersObj).reduce((acc, item) => {
-      if(item.board === board) {
-        if (item.zIndex > highestZIndex.current) {
-          highestZIndex.current = item.zIndex;
-        }
-
-        return assoc(item.id, item, acc);
+    Object.values(initialStickers).forEach(sticker => {
+      if (sticker.zIndex > highestZIndex.current) {
+        highestZIndex.current = sticker.zIndex;
       }
-
-      return acc;
-    }, {} );
-
-    setStickers(filtered);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    });
+  }, [initialStickers]);
 
   return {
     adjustZIndexes,

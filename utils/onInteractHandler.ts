@@ -1,7 +1,6 @@
-import { BOARD_TYPE } from "../constants";
-import theme from '../theme';
+import { BoardType } from '@/types';
 
-const onInteractHandler = (board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE]) => {
+const onInteractHandler = (board: BoardType) => {
   const stickerContainers = document.querySelectorAll('.sticker-container');
 
   for (let i = 0; i < stickerContainers.length; i++) {
@@ -11,9 +10,9 @@ const onInteractHandler = (board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE]) 
 
     
     if (containerBoard === board) {
-      stickerContainer.style.borderColor = theme.colors.activeBoard;
+      stickerContainer.classList.add('boardActive');
     } else {
-      stickerContainer.style.borderColor = theme.colors.notActiveBoard;
+      stickerContainer.classList.add('boardNotActive');
     }
   }
 };

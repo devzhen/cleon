@@ -1,4 +1,4 @@
-import { BOARD_TYPE } from "../constants";
+import { BOARD_TYPE } from "@/constants";
 
 const decreaseZIndexMoreThan = (board: typeof BOARD_TYPE[keyof typeof BOARD_TYPE], zIndex: number) => {
   const stickers = document.querySelectorAll(`.sticker[data-board="${board}"`);
@@ -9,7 +9,7 @@ const decreaseZIndexMoreThan = (board: typeof BOARD_TYPE[keyof typeof BOARD_TYPE
     const stickerZIndex = parseInt(window.getComputedStyle(sticker, null).zIndex);
 
     if (stickerZIndex >= zIndex) {
-      sticker.style.zIndex = `${stickerZIndex - 1}`;
+      sticker.style.zIndex = `${Math.max(0, stickerZIndex - 1)}`;
     }
   }
 };

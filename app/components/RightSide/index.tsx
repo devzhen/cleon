@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { useRef } from "react";
 
-import { BOARD_TYPE } from "@/app/constants";
 import useDraggableAreas from "@/app/hooks/useDraggableAreas";
 import useSticker from "@/app/hooks/useSticker";
-import getCoords from "@/app/utils/getCoords";
-import isPointInPath from "@/app/utils/isPointInPath";
-import onInteractHandler from "@/app/utils/onInteractHandler";
+import { BOARD_TYPE } from "@/constants";
+import type { Sticker } from "@/types";
+import getCoords from "@/utils/getCoords";
+import isPointInPath from "@/utils/isPointInPath";
+import onInteractHandler from "@/utils/onInteractHandler";
 
 import ButtonsAddDelete from "../ButtonsAddDelete";
 import ModalAddSticker from "../ModalAddSticker";
@@ -16,7 +17,13 @@ import StickerComponent from "../Sticker";
 
 import styles from "./RightSide.module.css";
 
-export default function LeftSide() {
+type RightSideProps = {
+  initialStickers: Record<string, Sticker>;
+};
+
+export default function RightSide(props: RightSideProps) {
+  const { initialStickers } = props;
+
   // Current draggable sticker
   const currentDragElementRef = useRef<HTMLDivElement>();
 
@@ -376,6 +383,7 @@ export default function LeftSide() {
   } = useSticker({
     board: BOARD_TYPE.right,
     onInteract: onInteractHandler,
+    initialStickers,
   });
 
   /**

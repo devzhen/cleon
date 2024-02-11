@@ -45,5 +45,3 @@ export const stickers = {
     zIndex: 3,
   },
 };
-
-export type Sticker = Omit<typeof stickers.firstId, 'board'> & { board: typeof BOARD_TYPE[keyof typeof BOARD_TYPE] };
