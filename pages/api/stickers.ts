@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import assocPath from 'ramda/src/assocPath';
 
 import { BOARD_TYPE, STICKERS_INITIAL_VALUE } from '@/constants';
-import type { Sticker } from '@/types';
+import type { BoardType, Sticker } from '@/types';
 
 type ResponseData = {
   message: string
@@ -11,8 +11,6 @@ type ResponseData = {
   [BOARD_TYPE.right]: Record<string, Sticker>
   }
 
-type BoardType = typeof BOARD_TYPE[keyof typeof BOARD_TYPE];
- 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
