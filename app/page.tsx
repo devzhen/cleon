@@ -19,12 +19,18 @@ export default async function Home() {
   try {
     const requestUrl = headers().get('x-url');
 
+    console.log(requestUrl);
+
     const url = new URL(`${requestUrl}api/stickers`);
     url.searchParams.set('board', BOARD_TYPE.all);
+
+    console.log(url);
 
     const response = await fetch(url.toString());
 
     stickers = await response.json();
+
+    console.log(stickers);
   } catch (err) {
     // Handle errors
   }
