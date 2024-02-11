@@ -1,22 +1,22 @@
-import ramdaClone from "ramda/src/clone";
-import omit from "ramda/src/omit";
-import { useEffect, useRef, useState } from "react";
-import { v4 as uuid } from "uuid";
+import ramdaClone from 'ramda/src/clone';
+import omit from 'ramda/src/omit';
+import { useEffect, useRef, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
-import { DEFAULT_STICKER_POS } from "@/constants";
+import { DEFAULT_STICKER_POS } from '@/constants';
 import type { Sticker, BoardType } from '@/types';
-import decreaseZIndexMoreThan from "@/utils/decreaseZIndexMoreThan";
+import decreaseZIndexMoreThan from '@/utils/decreaseZIndexMoreThan';
 
-import useModal from "./useModal.hook";
+import useModal from './useModal.hook';
 
 type UseStickerProps = {
   board: BoardType;
-  onInteract: (board: BoardType) => void,
+  onInteract: (board: BoardType) => void;
   initialStickers: Record<string, Sticker>;
-}
+};
 
 const useSticker = (props: UseStickerProps) => {
-  const { board, onInteract, initialStickers }  = props;
+  const { board, onInteract, initialStickers } = props;
 
   const highestZIndex = useRef(0);
 
@@ -97,7 +97,7 @@ const useSticker = (props: UseStickerProps) => {
    * Toggle delete mode
    */
   const toggleDeleteMode = () => {
-    setIsDeleteMode(prev => !prev);
+    setIsDeleteMode((prev) => !prev);
 
     onInteract(board);
   };
@@ -108,16 +108,16 @@ const useSticker = (props: UseStickerProps) => {
   const removeSticker = (id: string, zIndex: number) => () => {
     decreaseZIndexMoreThan(board, zIndex);
 
-    setStickers(prev => omit([id], prev));
+    setStickers((prev) => omit([id], prev));
     setIsDeleteMode(false);
 
     // TODO: send the data to a server
-  }; 
+  };
 
   /**
    * Adjust z-indexes
    */
-  const adjustZIndexes = ({ zIndex, stickerId }: { zIndex: number, stickerId: string }) => {
+  const adjustZIndexes = ({ zIndex, stickerId }: { zIndex: number; stickerId: string }) => {
     decreaseZIndexMoreThan(board, zIndex);
 
     const sticker = document.querySelector(`[data-id="${stickerId}"]`) as HTMLDivElement;
@@ -126,7 +126,7 @@ const useSticker = (props: UseStickerProps) => {
     onInteract(board);
 
     // TODO: send the data to a server
-  };  
+  };
 
   /**
    * Lifecycle
@@ -150,7 +150,7 @@ const useSticker = (props: UseStickerProps) => {
    * Lifecycle
    */
   useEffect(() => {
-    Object.values(initialStickers).forEach(sticker => {
+    Object.values(initialStickers).forEach((sticker) => {
       if (sticker.zIndex > highestZIndex.current) {
         highestZIndex.current = sticker.zIndex;
       }
@@ -165,10 +165,10 @@ const useSticker = (props: UseStickerProps) => {
     editedSticker,
     editSticker,
     isDeleteMode,
-    isModalOpen, 
+    isModalOpen,
     removeSticker,
     setIsDeleteMode,
-    setModalVisibility, 
+    setModalVisibility,
     stickers: Object.values(stickers),
     toggleDeleteMode,
   };

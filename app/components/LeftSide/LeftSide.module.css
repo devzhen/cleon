@@ -12,7 +12,7 @@
   z-index: 2;
 }
 
-.leftSide [data-role="drag-area"] {
+.leftSide [data-role='drag-area'] {
   position: absolute;
 }
 
@@ -68,11 +68,12 @@
   cursor: pointer;
 }
 
-.leftSide .banner:nth-child(2), .leftSide .banner:nth-child(3) {
+.leftSide .banner:nth-child(2),
+.leftSide .banner:nth-child(3) {
   margin-top: 10px;
 }
 
-.bottomBanner  {
+.bottomBanner {
   margin: 0 10px 10px 0;
   width: 129px;
   height: 188px;

@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useRef } from "react";
+import Image from 'next/image';
+import { useRef } from 'react';
 
-import useDraggableAreas from "@/app/hooks/useDraggableAreas";
-import useSticker from "@/app/hooks/useSticker";
-import { BOARD_TYPE } from "@/constants";
-import type { Sticker } from "@/types";
-import getCoords from "@/utils/getCoords";
-import isPointInPath from "@/utils/isPointInPath";
-import onInteractHandler from "@/utils/onInteractHandler";
+import useDraggableAreas from '@/app/hooks/useDraggableAreas';
+import useSticker from '@/app/hooks/useSticker';
+import { BOARD_TYPE } from '@/constants';
+import type { Sticker } from '@/types';
+import getCoords from '@/utils/getCoords';
+import isPointInPath from '@/utils/isPointInPath';
+import onInteractHandler from '@/utils/onInteractHandler';
 
-import ButtonsAddDelete from "../ButtonsAddDelete";
-import ModalAddSticker from "../ModalAddSticker";
-import StickerComponent from "../Sticker";
+import ButtonsAddDelete from '../ButtonsAddDelete';
+import ModalAddSticker from '../ModalAddSticker';
+import StickerComponent from '../Sticker';
 
-import styles from "./LeftSide.module.css";
+import styles from './LeftSide.module.css';
 
 type LeftSideProps = {
   initialStickers: Record<string, Sticker>;
@@ -61,16 +61,13 @@ export default function LeftSide(props: LeftSideProps) {
 
     const dragContainerRect = dragContainerRef.current.getBoundingClientRect();
 
-    const leftBannerWrapperRect =
-      leftBannerWrapperRef.current.getBoundingClientRect();
+    const leftBannerWrapperRect = leftBannerWrapperRef.current.getBoundingClientRect();
 
     const logoWrapperRect = logoWrapperRef.current.getBoundingClientRect();
 
-    const buttonsWrapperRect =
-      buttonsWrapperRef.current.getBoundingClientRect();
+    const buttonsWrapperRect = buttonsWrapperRef.current.getBoundingClientRect();
 
-    const lastBannerWrapperRect =
-      lastBannerWrapperRef.current.getBoundingClientRect();
+    const lastBannerWrapperRect = lastBannerWrapperRef.current.getBoundingClientRect();
 
     const BORDER_WIDTH = 3;
 
@@ -84,9 +81,7 @@ export default function LeftSide(props: LeftSideProps) {
         BORDER_WIDTH * 2,
       height:
         dragContainerRect.height -
-        (logoWrapperRect.height +
-          lastBannerWrapperRect.height +
-          BORDER_WIDTH * 2),
+        (logoWrapperRect.height + lastBannerWrapperRect.height + BORDER_WIDTH * 2),
     };
 
     dragArea1Ref.current.style.top = `${dragArea1Rect.top}px`;
@@ -97,15 +92,10 @@ export default function LeftSide(props: LeftSideProps) {
     const dragArea2Rect = {
       left: leftBannerWrapperRect.width,
       top: buttonsWrapperRect.height,
-      width:
-        dragContainerRect.width -
-        leftBannerWrapperRect.width -
-        BORDER_WIDTH * 2,
+      width: dragContainerRect.width - leftBannerWrapperRect.width - BORDER_WIDTH * 2,
       height:
         dragContainerRect.height -
-        (buttonsWrapperRect.height +
-          lastBannerWrapperRect.height +
-          BORDER_WIDTH * 2),
+        (buttonsWrapperRect.height + lastBannerWrapperRect.height + BORDER_WIDTH * 2),
     };
 
     dragArea2Ref.current.style.top = `${dragArea2Rect.top}px`;
@@ -116,13 +106,8 @@ export default function LeftSide(props: LeftSideProps) {
     const dragArea3Rect = {
       left: 0,
       top: leftBannerWrapperRect.height,
-      width:
-        dragContainerRect.width -
-        lastBannerWrapperRect.width -
-        BORDER_WIDTH * 2,
-      height:
-        dragContainerRect.height -
-        (leftBannerWrapperRect.height + BORDER_WIDTH * 2),
+      width: dragContainerRect.width - lastBannerWrapperRect.width - BORDER_WIDTH * 2,
+      height: dragContainerRect.height - (leftBannerWrapperRect.height + BORDER_WIDTH * 2),
     };
 
     dragArea3Ref.current.style.top = `${dragArea3Rect.top}px`;
@@ -149,9 +134,7 @@ export default function LeftSide(props: LeftSideProps) {
       return;
     }
 
-    const stickerCoords = getCoords(
-      currentDragElementRef.current as HTMLDivElement
-    );
+    const stickerCoords = getCoords(currentDragElementRef.current as HTMLDivElement);
 
     const dragArea1Coords = getCoords(dragArea1Ref.current);
     const dragArea2Coords = getCoords(dragArea2Ref.current);
@@ -162,16 +145,8 @@ export default function LeftSide(props: LeftSideProps) {
       // Attach to the drag area 2
       if (
         stickerCoords.top > dragArea2Coords.top &&
-        !isPointInPath(
-          leftBannerWrapperRef.current,
-          stickerCoords.left,
-          stickerCoords.top
-        ) &&
-        !isPointInPath(
-          buttonsWrapperRef.current,
-          stickerCoords.right,
-          stickerCoords.top
-        )
+        !isPointInPath(leftBannerWrapperRef.current, stickerCoords.left, stickerCoords.top) &&
+        !isPointInPath(buttonsWrapperRef.current, stickerCoords.right, stickerCoords.top)
       ) {
         currentDragElementParentRef.current = dragArea2Ref.current;
       }
@@ -190,10 +165,7 @@ export default function LeftSide(props: LeftSideProps) {
       }
 
       // Attach to the drag area 1
-      if (
-        stickerCoords.top < dragArea2Coords.top &&
-        stickerCoords.right <= dragArea1Coords.right
-      ) {
+      if (stickerCoords.top < dragArea2Coords.top && stickerCoords.right <= dragArea1Coords.right) {
         currentDragElementParentRef.current = dragArea1Ref.current;
       }
     }
@@ -206,11 +178,7 @@ export default function LeftSide(props: LeftSideProps) {
         stickerCoords.left > dragArea3Coords.left &&
         stickerCoords.right < dragArea3Coords.right &&
         stickerCoords.bottom < dragArea3Coords.bottom &&
-        !isPointInPath(
-          leftBannerWrapperRef.current,
-          stickerCoords.left,
-          stickerCoords.top
-        )
+        !isPointInPath(leftBannerWrapperRef.current, stickerCoords.left, stickerCoords.top)
       ) {
         currentDragElementParentRef.current = dragArea2Ref.current;
       }
@@ -221,11 +189,7 @@ export default function LeftSide(props: LeftSideProps) {
         stickerCoords.left > dragArea3Coords.left &&
         stickerCoords.right > dragArea3Coords.right &&
         stickerCoords.bottom < dragArea3Coords.bottom &&
-        !isPointInPath(
-          lastBannerWrapperRef.current,
-          stickerCoords.right,
-          stickerCoords.bottom
-        )
+        !isPointInPath(lastBannerWrapperRef.current, stickerCoords.right, stickerCoords.bottom)
       ) {
         currentDragElementParentRef.current = dragArea2Ref.current;
       }
@@ -236,11 +200,7 @@ export default function LeftSide(props: LeftSideProps) {
         stickerCoords.left > dragArea3Coords.left &&
         stickerCoords.right >= dragArea3Coords.right &&
         stickerCoords.bottom < dragArea3Coords.bottom &&
-        isPointInPath(
-          lastBannerWrapperRef.current,
-          stickerCoords.right,
-          stickerCoords.bottom
-        )
+        isPointInPath(lastBannerWrapperRef.current, stickerCoords.right, stickerCoords.bottom)
       ) {
         currentDragElementParentRef.current = dragArea2Ref.current;
       }
@@ -251,20 +211,13 @@ export default function LeftSide(props: LeftSideProps) {
    * Correct a sticker's position relative to a parent
    */
   const correctPositionRelativeToParent = () => {
-    if (
-      !currentDragElementRef.current ||
-      !currentDragElementParentRef.current
-    ) {
+    if (!currentDragElementRef.current || !currentDragElementParentRef.current) {
       return;
     }
 
-    const stickerCoords = getCoords(
-      currentDragElementRef.current as HTMLDivElement
-    );
+    const stickerCoords = getCoords(currentDragElementRef.current as HTMLDivElement);
 
-    const parentCoords = getCoords(
-      currentDragElementParentRef.current as HTMLDivElement
-    );
+    const parentCoords = getCoords(currentDragElementParentRef.current as HTMLDivElement);
 
     if (stickerCoords.left < parentCoords.left) {
       currentDragElementRef.current.style.left = `${currentDragElementParentRef.current.offsetLeft}px`;
@@ -276,17 +229,13 @@ export default function LeftSide(props: LeftSideProps) {
 
     if (stickerCoords.left + stickerCoords.width > parentCoords.right) {
       currentDragElementRef.current.style.left = `${
-        currentDragElementParentRef.current.offsetLeft +
-        parentCoords.width -
-        stickerCoords.width
+        currentDragElementParentRef.current.offsetLeft + parentCoords.width - stickerCoords.width
       }px`;
     }
 
     if (stickerCoords.top + stickerCoords.width > parentCoords.bottom) {
       currentDragElementRef.current.style.top = `${
-        currentDragElementParentRef.current?.offsetTop +
-        parentCoords.height -
-        stickerCoords.height
+        currentDragElementParentRef.current?.offsetTop + parentCoords.height - stickerCoords.height
       }px`;
     }
   };
@@ -299,13 +248,9 @@ export default function LeftSide(props: LeftSideProps) {
       return;
     }
 
-    const stickerCoords = getCoords(
-      currentDragElementRef.current as HTMLDivElement
-    );
+    const stickerCoords = getCoords(currentDragElementRef.current as HTMLDivElement);
 
-    const dragContainerCoords = getCoords(
-      dragContainerRef.current as HTMLDivElement
-    );
+    const dragContainerCoords = getCoords(dragContainerRef.current as HTMLDivElement);
 
     if (stickerCoords.left < dragContainerCoords.left) {
       currentDragElementRef.current.style.left = `${0}px`;

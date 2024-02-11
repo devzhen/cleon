@@ -9,4 +9,4 @@ export const BOARD_TYPE = {
   all: 'all',
 } as const;
 
-export const STICKERS_INITIAL_VALUE = { [BOARD_TYPE.left]: {}, [BOARD_TYPE.right]: {}};
+export const STICKERS_INITIAL_VALUE = { [BOARD_TYPE.left]: {}, [BOARD_TYPE.right]: {} };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const useModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +32,7 @@ const useModal = () => {
         adjustModalBg();
       }
     };
-    
+
     document.addEventListener('scroll', onScroll);
 
     return () => {
@@ -40,7 +40,7 @@ const useModal = () => {
     };
   }, [isModalOpen]);
 
-  return  {
+  return {
     isModalOpen,
     setModalVisibility,
     closeModal,

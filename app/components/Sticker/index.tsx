@@ -1,9 +1,9 @@
-import { parseISO, format } from "date-fns";
-import Image from "next/image";
+import { parseISO, format } from 'date-fns';
+import Image from 'next/image';
 
-import { Sticker, BoardType } from "@/types";
+import { Sticker, BoardType } from '@/types';
 
-import styles from "./Sticker.module.css";
+import styles from './Sticker.module.css';
 
 type StickerProps = {
   board: BoardType;
@@ -15,17 +15,10 @@ type StickerProps = {
 };
 
 const Sticker = (props: StickerProps) => {
-  const {
-    board,
-    editSticker,
-    isDeleteMode,
-    onMouseDown,
-    removeSticker,
-    sticker,
-  } = props;
+  const { board, editSticker, isDeleteMode, onMouseDown, removeSticker, sticker } = props;
 
   const date = parseISO(sticker.createdAt);
-  const dateFormatted = format(date, "MM-dd-yyyy HH:mm:ss aa");
+  const dateFormatted = format(date, 'MM-dd-yyyy HH:mm:ss aa');
 
   return (
     <div

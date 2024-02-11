@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useRef } from "react";
+import Image from 'next/image';
+import { useRef } from 'react';
 
-import useDraggableAreas from "@/app/hooks/useDraggableAreas";
-import useSticker from "@/app/hooks/useSticker";
-import { BOARD_TYPE } from "@/constants";
-import type { Sticker } from "@/types";
-import getCoords from "@/utils/getCoords";
-import isPointInPath from "@/utils/isPointInPath";
-import onInteractHandler from "@/utils/onInteractHandler";
+import useDraggableAreas from '@/app/hooks/useDraggableAreas';
+import useSticker from '@/app/hooks/useSticker';
+import { BOARD_TYPE } from '@/constants';
+import type { Sticker } from '@/types';
+import getCoords from '@/utils/getCoords';
+import isPointInPath from '@/utils/isPointInPath';
+import onInteractHandler from '@/utils/onInteractHandler';
 
-import ButtonsAddDelete from "../ButtonsAddDelete";
-import ModalAddSticker from "../ModalAddSticker";
-import StickerComponent from "../Sticker";
+import ButtonsAddDelete from '../ButtonsAddDelete';
+import ModalAddSticker from '../ModalAddSticker';
+import StickerComponent from '../Sticker';
 
-import styles from "./RightSide.module.css";
+import styles from './RightSide.module.css';
 
 type RightSideProps = {
   initialStickers: Record<string, Sticker>;
@@ -69,16 +69,12 @@ export default function RightSide(props: RightSideProps) {
 
     const BORDER_WIDTH = 3;
 
-    const dragContainerRefRect =
-      dragContainerRef.current.getBoundingClientRect();
+    const dragContainerRefRect = dragContainerRef.current.getBoundingClientRect();
     const headerRect = headerRef.current.getBoundingClientRect();
     const topImagesRefRect = topImagesRef.current.getBoundingClientRect();
-    const buttonAddDeleteRefRect =
-      buttonAddDeleteRef.current.getBoundingClientRect();
-    const bottomLeftImagesRefRect =
-      bottomLeftImagesRef.current.getBoundingClientRect();
-    const bottomRightImagesRefRect =
-      bottomRightImagesRef.current.getBoundingClientRect();
+    const buttonAddDeleteRefRect = buttonAddDeleteRef.current.getBoundingClientRect();
+    const bottomLeftImagesRefRect = bottomLeftImagesRef.current.getBoundingClientRect();
+    const bottomRightImagesRefRect = bottomRightImagesRef.current.getBoundingClientRect();
 
     const dragArea1Rect = {
       left: 0,
@@ -91,7 +87,7 @@ export default function RightSide(props: RightSideProps) {
     dragArea1Ref.current.style.left = `${dragArea1Rect.left}px`;
     dragArea1Ref.current.style.width = `${dragArea1Rect.width}px`;
     dragArea1Ref.current.style.height = `${dragArea1Rect.height}px`;
-    dragArea1Ref.current.style.opacity = "0.5";
+    dragArea1Ref.current.style.opacity = '0.5';
 
     const dragArea2Rect = {
       left: 0,
@@ -104,45 +100,38 @@ export default function RightSide(props: RightSideProps) {
     dragArea2Ref.current.style.left = `${dragArea2Rect.left}px`;
     dragArea2Ref.current.style.width = `${dragArea2Rect.width}px`;
     dragArea2Ref.current.style.height = `${dragArea2Rect.height}px`;
-    dragArea2Ref.current.style.opacity = "0.5";
+    dragArea2Ref.current.style.opacity = '0.5';
 
     const dragArea3Rect = {
       left: 0,
       top: buttonAddDeleteRef.current.offsetTop + buttonAddDeleteRefRect.height,
       width: topImagesRef.current.offsetLeft,
       height:
-        bottomLeftImagesRef.current.offsetTop -
-        headerRect.height -
-        buttonAddDeleteRefRect.height,
+        bottomLeftImagesRef.current.offsetTop - headerRect.height - buttonAddDeleteRefRect.height,
     };
 
     dragArea3Ref.current.style.top = `${dragArea3Rect.top}px`;
     dragArea3Ref.current.style.left = `${dragArea3Rect.left}px`;
     dragArea3Ref.current.style.width = `${dragArea3Rect.width}px`;
     dragArea3Ref.current.style.height = `${dragArea3Rect.height}px`;
-    dragArea3Ref.current.style.opacity = "0.5";
+    dragArea3Ref.current.style.opacity = '0.5';
 
     const dragArea4Rect = {
       left: 0,
       top: topImagesRef.current.offsetTop + topImagesRefRect.height,
       width: dragContainerRefRect.width - BORDER_WIDTH * 2,
-      height:
-        bottomRightImagesRef.current.offsetTop -
-        headerRect.height -
-        topImagesRefRect.height,
+      height: bottomRightImagesRef.current.offsetTop - headerRect.height - topImagesRefRect.height,
     };
 
     dragArea4Ref.current.style.top = `${dragArea4Rect.top}px`;
     dragArea4Ref.current.style.left = `${dragArea4Rect.left}px`;
     dragArea4Ref.current.style.width = `${dragArea4Rect.width}px`;
     dragArea4Ref.current.style.height = `${dragArea4Rect.height}px`;
-    dragArea4Ref.current.style.opacity = "0.5";
+    dragArea4Ref.current.style.opacity = '0.5';
 
     const dragArea5Rect = {
-      left:
-        bottomLeftImagesRefRect.width + bottomLeftImagesRef.current.offsetLeft,
-      top:
-        bottomLeftImagesRef.current.offsetTop - bottomLeftImagesRefRect.height,
+      left: bottomLeftImagesRefRect.width + bottomLeftImagesRef.current.offsetLeft,
+      top: bottomLeftImagesRef.current.offsetTop - bottomLeftImagesRefRect.height,
       width:
         bottomRightImagesRef.current.offsetLeft -
         bottomLeftImagesRefRect.width -
@@ -154,7 +143,7 @@ export default function RightSide(props: RightSideProps) {
     dragArea5Ref.current.style.left = `${dragArea5Rect.left}px`;
     dragArea5Ref.current.style.width = `${dragArea5Rect.width}px`;
     dragArea5Ref.current.style.height = `${dragArea5Rect.height}px`;
-    dragArea5Ref.current.style.opacity = "0.5";
+    dragArea5Ref.current.style.opacity = '0.5';
   };
 
   /**
@@ -178,9 +167,7 @@ export default function RightSide(props: RightSideProps) {
       return;
     }
 
-    const stickerCoords = getCoords(
-      currentDragElementRef.current as HTMLDivElement
-    );
+    const stickerCoords = getCoords(currentDragElementRef.current as HTMLDivElement);
 
     const dragArea1Coords = getCoords(dragArea1Ref.current);
     const dragArea2Coords = getCoords(dragArea2Ref.current);
@@ -190,37 +177,25 @@ export default function RightSide(props: RightSideProps) {
 
     // The drag area 1
     if (currentDragElementParentRef.current === dragArea1Ref.current) {
-      if (
-        stickerCoords.top > dragArea2Coords.top &&
-        stickerCoords.right > dragArea1Coords.right
-      ) {
+      if (stickerCoords.top > dragArea2Coords.top && stickerCoords.right > dragArea1Coords.right) {
         currentDragElementParentRef.current = dragArea2Ref.current;
       }
     }
 
     // The drag area 2
     if (currentDragElementParentRef.current === dragArea2Ref.current) {
-      if (
-        stickerCoords.top < dragArea2Coords.top &&
-        stickerCoords.right <= dragArea1Coords.right
-      ) {
+      if (stickerCoords.top < dragArea2Coords.top && stickerCoords.right <= dragArea1Coords.right) {
         currentDragElementParentRef.current = dragArea1Ref.current;
       }
 
-      if (
-        stickerCoords.top >= dragArea3Coords.top &&
-        stickerCoords.right > dragArea2Coords.right
-      ) {
+      if (stickerCoords.top >= dragArea3Coords.top && stickerCoords.right > dragArea2Coords.right) {
         currentDragElementParentRef.current = dragArea3Ref.current;
       }
     }
 
     // The drag area 3
     if (currentDragElementParentRef.current === dragArea3Ref.current) {
-      if (
-        stickerCoords.top < dragArea3Coords.top &&
-        stickerCoords.right < dragArea2Coords.right
-      ) {
+      if (stickerCoords.top < dragArea3Coords.top && stickerCoords.right < dragArea2Coords.right) {
         currentDragElementParentRef.current = dragArea2Ref.current;
       }
 
@@ -231,34 +206,15 @@ export default function RightSide(props: RightSideProps) {
 
     // The drag area 4
     if (currentDragElementParentRef.current === dragArea4Ref.current) {
-      if (
-        stickerCoords.top < dragArea4Coords.top &&
-        stickerCoords.right < dragArea3Coords.right
-      ) {
+      if (stickerCoords.top < dragArea4Coords.top && stickerCoords.right < dragArea3Coords.right) {
         currentDragElementParentRef.current = dragArea3Ref.current;
       }
 
       if (
-        isPointInPath(
-          dragArea5Ref.current,
-          stickerCoords.left,
-          stickerCoords.top
-        ) &&
-        isPointInPath(
-          dragArea5Ref.current,
-          stickerCoords.right,
-          stickerCoords.top
-        ) &&
-        isPointInPath(
-          dragArea5Ref.current,
-          stickerCoords.left,
-          stickerCoords.bottom
-        ) &&
-        isPointInPath(
-          dragArea5Ref.current,
-          stickerCoords.right,
-          stickerCoords.bottom
-        )
+        isPointInPath(dragArea5Ref.current, stickerCoords.left, stickerCoords.top) &&
+        isPointInPath(dragArea5Ref.current, stickerCoords.right, stickerCoords.top) &&
+        isPointInPath(dragArea5Ref.current, stickerCoords.left, stickerCoords.bottom) &&
+        isPointInPath(dragArea5Ref.current, stickerCoords.right, stickerCoords.bottom)
       ) {
         currentDragElementParentRef.current = dragArea5Ref.current;
       }
@@ -268,16 +224,8 @@ export default function RightSide(props: RightSideProps) {
     if (currentDragElementParentRef.current === dragArea5Ref.current) {
       if (
         stickerCoords.top < dragArea5Coords.top &&
-        (!isPointInPath(
-          dragArea5Ref.current,
-          stickerCoords.left,
-          stickerCoords.top
-        ) ||
-          !isPointInPath(
-            dragArea5Ref.current,
-            stickerCoords.right,
-            stickerCoords.top
-          ))
+        (!isPointInPath(dragArea5Ref.current, stickerCoords.left, stickerCoords.top) ||
+          !isPointInPath(dragArea5Ref.current, stickerCoords.right, stickerCoords.top))
       ) {
         currentDragElementParentRef.current = dragArea4Ref.current;
       }
@@ -288,20 +236,13 @@ export default function RightSide(props: RightSideProps) {
    * Correct a sticker's position relative to a parent
    */
   const correctPositionRelativeToParent = () => {
-    if (
-      !currentDragElementRef.current ||
-      !currentDragElementParentRef.current
-    ) {
+    if (!currentDragElementRef.current || !currentDragElementParentRef.current) {
       return;
     }
 
-    const stickerCoords = getCoords(
-      currentDragElementRef.current as HTMLDivElement
-    );
+    const stickerCoords = getCoords(currentDragElementRef.current as HTMLDivElement);
 
-    const parentCoords = getCoords(
-      currentDragElementParentRef.current as HTMLDivElement
-    );
+    const parentCoords = getCoords(currentDragElementParentRef.current as HTMLDivElement);
 
     if (stickerCoords.left < parentCoords.left) {
       currentDragElementRef.current.style.left = `${currentDragElementParentRef.current.offsetLeft}px`;
@@ -313,17 +254,13 @@ export default function RightSide(props: RightSideProps) {
 
     if (stickerCoords.left + stickerCoords.width > parentCoords.right) {
       currentDragElementRef.current.style.left = `${
-        currentDragElementParentRef.current.offsetLeft +
-        parentCoords.width -
-        stickerCoords.width
+        currentDragElementParentRef.current.offsetLeft + parentCoords.width - stickerCoords.width
       }px`;
     }
 
     if (stickerCoords.top + stickerCoords.width > parentCoords.bottom) {
       currentDragElementRef.current.style.top = `${
-        currentDragElementParentRef.current?.offsetTop +
-        parentCoords.height -
-        stickerCoords.height
+        currentDragElementParentRef.current?.offsetTop + parentCoords.height - stickerCoords.height
       }px`;
     }
   };
@@ -336,13 +273,9 @@ export default function RightSide(props: RightSideProps) {
       return;
     }
 
-    const stickerCoords = getCoords(
-      currentDragElementRef.current as HTMLDivElement
-    );
+    const stickerCoords = getCoords(currentDragElementRef.current as HTMLDivElement);
 
-    const dragContainerCoords = getCoords(
-      dragContainerRef.current as HTMLDivElement
-    );
+    const dragContainerCoords = getCoords(dragContainerRef.current as HTMLDivElement);
 
     if (stickerCoords.left < dragContainerCoords.left) {
       currentDragElementRef.current.style.left = `${0}px`;
@@ -395,8 +328,7 @@ export default function RightSide(props: RightSideProps) {
     onMountHandler: () => {
       initDragAreas();
 
-      currentDragElementParentRef.current =
-        dragArea2Ref.current as HTMLDivElement;
+      currentDragElementParentRef.current = dragArea2Ref.current as HTMLDivElement;
     },
     onMouseMoveHandler: () => {
       detectParentContainer();

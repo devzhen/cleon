@@ -1,26 +1,26 @@
-import { Roboto } from "next/font/google";
-import { headers } from "next/headers";
+import { Roboto } from 'next/font/google';
+import { headers } from 'next/headers';
 
-import { BOARD_TYPE, STICKERS_INITIAL_VALUE } from "@/constants";
+import { BOARD_TYPE, STICKERS_INITIAL_VALUE } from '@/constants';
 
-import Header from "./components/Header";
-import LeftSide from "./components/LeftSide";
-import RightSide from "./components/RightSide";
+import Header from './components/Header';
+import LeftSide from './components/LeftSide';
+import RightSide from './components/RightSide';
 
 const font = Roboto({
-  subsets: ["latin"],
-  weight: "400",
-  fallback: ["Times New Roman"],
+  subsets: ['latin'],
+  weight: '400',
+  fallback: ['Times New Roman'],
 });
 
 export default async function Home() {
   let stickers = { ...STICKERS_INITIAL_VALUE };
 
   try {
-    const requestUrl = headers().get("x-url");
+    const requestUrl = headers().get('x-url');
 
     const url = new URL(`${requestUrl}api/stickers`);
-    url.searchParams.set("board", BOARD_TYPE.all);
+    url.searchParams.set('board', BOARD_TYPE.all);
 
     const response = await fetch(url.toString());
 

@@ -1,9 +1,9 @@
-import Image from "next/image";
-import { ChangeEvent, useState } from "react";
+import Image from 'next/image';
+import { ChangeEvent, useState } from 'react';
 
-import { Sticker, BoardType } from "@/types";
+import { Sticker, BoardType } from '@/types';
 
-import styles from "./ModalAddSticker.module.css";
+import styles from './ModalAddSticker.module.css';
 
 type ModalAddStickerProps = {
   board: BoardType;
@@ -23,7 +23,7 @@ type ModalAddStickerProps = {
 const ModalAddSticker = (props: ModalAddStickerProps) => {
   const { closeModal, createSticker, board, sticker } = props;
 
-  const [text, setText] = useState(sticker?.text || "");
+  const [text, setText] = useState(sticker?.text || '');
 
   const addStickerHandler = () => {
     createSticker({ text, board, id: sticker?.id });

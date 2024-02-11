@@ -4,17 +4,16 @@ import assocPath from 'ramda/src/assocPath';
 import { BOARD_TYPE, STICKERS_INITIAL_VALUE } from '@/constants';
 import type { BoardType, Sticker } from '@/types';
 
-type ResponseData = {
-  message: string
-} | { 
-  [BOARD_TYPE.left]:  Record<string, Sticker>,
-  [BOARD_TYPE.right]: Record<string, Sticker>
-  }
+type ResponseData =
+  | {
+      message: string;
+    }
+  | {
+      [BOARD_TYPE.left]: Record<string, Sticker>;
+      [BOARD_TYPE.right]: Record<string, Sticker>;
+    };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
   if ('board' in req.query === false) {
     res.status(500).json({ message: `The required query param 'board' was not provided` });
   }

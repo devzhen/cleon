@@ -8,7 +8,6 @@ const onInteractHandler = (board: BoardType) => {
 
     const containerBoard = stickerContainer.getAttribute('data-board');
 
-    
     if (containerBoard === board) {
       stickerContainer.classList.add('boardActive');
     } else {

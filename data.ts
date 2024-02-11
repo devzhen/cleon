@@ -1,6 +1,6 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from 'uuid';
 
-import { BOARD_TYPE } from "./constants";
+import { BOARD_TYPE } from './constants';
 
 const firstId = uuid();
 const secondId = uuid();

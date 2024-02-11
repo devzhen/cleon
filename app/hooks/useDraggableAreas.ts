@@ -1,15 +1,21 @@
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef } from 'react';
 
 type useDraggableAreasHookProps = {
-  currentDragElementRef: MutableRefObject<HTMLDivElement | undefined>,
-  dragContainerRef: MutableRefObject<HTMLDivElement | null>,
+  currentDragElementRef: MutableRefObject<HTMLDivElement | undefined>;
+  dragContainerRef: MutableRefObject<HTMLDivElement | null>;
   onMountHandler: () => void;
   onMouseMoveHandler: () => void;
-  onMouseDownHandler: ({ zIndex, stickerId }: { zIndex: number, stickerId: string }) => void;
-}
+  onMouseDownHandler: ({ zIndex, stickerId }: { zIndex: number; stickerId: string }) => void;
+};
 
 const useDraggableAreas = (props: useDraggableAreasHookProps) => {
-  const { currentDragElementRef, onMountHandler, onMouseMoveHandler, dragContainerRef, onMouseDownHandler } = props;
+  const {
+    currentDragElementRef,
+    onMountHandler,
+    onMouseMoveHandler,
+    dragContainerRef,
+    onMouseDownHandler,
+  } = props;
 
   const clickOffsetRef = useRef({ x: 0, y: 0 });
 
@@ -24,15 +30,13 @@ const useDraggableAreas = (props: useDraggableAreasHookProps) => {
     }
 
     currentDragElementRef.current = (e.target as HTMLElement)?.closest(
-      ".sticker"
+      '.sticker',
     ) as HTMLDivElement;
-    currentDragElementRef.current.style.cursor = "move";
+    currentDragElementRef.current.style.cursor = 'move';
 
-    const offsetX =
-      e.pageX - currentDragElementRef.current.getBoundingClientRect().left;
+    const offsetX = e.pageX - currentDragElementRef.current.getBoundingClientRect().left;
 
-    const offsetY =
-      e.pageY - currentDragElementRef.current.getBoundingClientRect().top;
+    const offsetY = e.pageY - currentDragElementRef.current.getBoundingClientRect().top;
 
     clickOffsetRef.current.x = offsetX;
     clickOffsetRef.current.y = offsetY;
@@ -75,7 +79,7 @@ const useDraggableAreas = (props: useDraggableAreasHookProps) => {
      */
     const onMouseUp = () => {
       if (currentDragElementRef.current) {
-        currentDragElementRef.current.style.cursor = "pointer";
+        currentDragElementRef.current.style.cursor = 'pointer';
       }
 
       if (isDragStartedRef.current) {
@@ -83,14 +87,14 @@ const useDraggableAreas = (props: useDraggableAreasHookProps) => {
       }
     };
 
-    document.addEventListener("mouseup", onMouseUp);
+    document.addEventListener('mouseup', onMouseUp);
 
     onMountHandler();
 
     return () => {
-      document.removeEventListener("mouseup", onMouseUp);
+      document.removeEventListener('mouseup', onMouseUp);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
