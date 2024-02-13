@@ -1,7 +1,7 @@
 import { parseISO, format } from 'date-fns';
 import Image from 'next/image';
 
-import { Sticker, BoardType } from '@/types';
+import { Sticker, BoardType } from '@/app/types';
 
 import styles from './Sticker.module.css';
 

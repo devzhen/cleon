@@ -1,4 +1,4 @@
-import { BoardType } from '@/types';
+import { BoardType } from '@/app/types';
 
 const onInteractHandler = (board: BoardType) => {
   const stickerContainers = document.querySelectorAll('.sticker-container');

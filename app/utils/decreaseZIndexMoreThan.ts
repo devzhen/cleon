@@ -1,4 +1,4 @@
-import { BOARD_TYPE } from '@/constants';
+import { BOARD_TYPE } from '@/app/constants';
 
 const decreaseZIndexMoreThan = (
   board: (typeof BOARD_TYPE)[keyof typeof BOARD_TYPE],

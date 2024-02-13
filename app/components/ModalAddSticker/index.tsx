@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ChangeEvent, useState } from 'react';
 
-import { Sticker, BoardType } from '@/types';
+import { Sticker, BoardType } from '@/app/types';
 
 import styles from './ModalAddSticker.module.css';
 

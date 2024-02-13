@@ -3,13 +3,13 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 
+import { BOARD_TYPE } from '@/app/constants';
 import useDraggableAreas from '@/app/hooks/useDraggableAreas';
 import useSticker from '@/app/hooks/useSticker';
-import { BOARD_TYPE } from '@/constants';
-import type { Sticker } from '@/types';
-import getCoords from '@/utils/getCoords';
-import isPointInPath from '@/utils/isPointInPath';
-import onInteractHandler from '@/utils/onInteractHandler';
+import type { Sticker } from '@/app/types';
+import getCoords from '@/app/utils/getCoords';
+import isPointInPath from '@/app/utils/isPointInPath';
+import onInteractHandler from '@/app/utils/onInteractHandler';
 
 import ButtonsAddDelete from '../ButtonsAddDelete';
 import ModalAddSticker from '../ModalAddSticker';

@@ -3,9 +3,9 @@ import omit from 'ramda/src/omit';
 import { useEffect, useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
-import { DEFAULT_STICKER_POS } from '@/constants';
-import type { Sticker, BoardType } from '@/types';
-import decreaseZIndexMoreThan from '@/utils/decreaseZIndexMoreThan';
+import { DEFAULT_STICKER_POS } from '@/app/constants';
+import type { Sticker, BoardType } from '@/app/types';
+import decreaseZIndexMoreThan from '@/app/utils/decreaseZIndexMoreThan';
 
 import useModal from './useModal.hook';
 
@@ -16,7 +16,7 @@ type UseStickerProps = {
 };
 
 const useSticker = (props: UseStickerProps) => {
-  const { board, onInteract, initialStickers } = props;
+  const { board, onInteract, initialStickers = {} } = props;
 
   const highestZIndex = useRef(0);
 

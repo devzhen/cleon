@@ -1,7 +1,7 @@
 import { Roboto } from 'next/font/google';
 import { headers } from 'next/headers';
 
-import { BOARD_TYPE, STICKERS_INITIAL_VALUE } from '@/constants';
+import { BOARD_TYPE, STICKERS_INITIAL_VALUE } from '@/app/constants';
 
 import Header from './components/Header';
 import LeftSide from './components/LeftSide';
