@@ -31,6 +31,7 @@ const Sticker = (props: StickerProps) => {
         left: sticker.left,
         zIndex: sticker.zIndex,
       }}
+      role="presentation"
     >
       <span data-role="date">{dateFormatted}</span>
       <div data-role="content-wrapper">

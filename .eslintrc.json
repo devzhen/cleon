@@ -2,11 +2,12 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
     "prettier",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["unused-imports", "@typescript-eslint"],
+  "plugins": ["unused-imports", "jsx-a11y", "@typescript-eslint"],
   "root": true,
   "rules": {
     "no-multiple-empty-lines": [2, { "max": 99999, "maxEOF": 0 }],
