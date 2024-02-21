@@ -146,20 +146,20 @@ exports[`RightSide tests matches the snapshot 1`] = `
     <div
       class="container sticker"
       data-board="right"
-      data-id="930c4351-09f2-4148-8b08-c39c9494fadb"
+      data-id="uuid/v4"
       role="presentation"
-      style="top: 110px; left: 230px; z-index: 1;"
+      style="top: 449px; left: 963px; z-index: 3;"
     >
       <span
         data-role="date"
       >
-        02-03-2024 08:03:55 AM
+        02-03-2024 09:10:11 AM
       </span>
       <div
         data-role="content-wrapper"
       >
         <span>
-          Draggable element 1
+          Draggable element 4
         </span>
       </div>
       <div

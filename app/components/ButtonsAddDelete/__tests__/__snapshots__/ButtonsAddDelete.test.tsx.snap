@@ -31,19 +31,3 @@ exports[`ButtonsAddDelete tests matches the snapshot with margins 1`] = `
   </div>
 </div>
 `;
-
-exports[`ButtonsAddDelete tests renders homepage unchanged 1`] = `
-<div>
-  <div
-    class="container"
-    style="margin-top: 0px; margin-right: 0px;"
-  >
-    <button>
-      +
-    </button>
-    <button>
-      -
-    </button>
-  </div>
-</div>
-`;

@@ -12,7 +12,7 @@ exports[`ModalAddSticker tests matches the snapshot 1`] = `
         Entrez votre nom
       </span>
       <textarea>
-        Draggable element 1
+        Draggable element 4
       </textarea>
       <div
         data-role="image-wrapper"
