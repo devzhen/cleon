@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalAddSticker tests matches the snapshot 1`] = `
+<div>
+  <div
+    class="background modal-bg"
+  >
+    <div
+      class="container"
+    >
+      <span>
+        Entrez votre nom
+      </span>
+      <textarea>
+        Draggable element 1
+      </textarea>
+      <div
+        data-role="image-wrapper"
+      >
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          height="52"
+          loading="lazy"
+          src="/_next/image?url=%2Fcross.png&w=128&q=75"
+          srcset="/_next/image?url=%2Fcross.png&w=64&q=75 1x, /_next/image?url=%2Fcross.png&w=128&q=75 2x"
+          style="color: transparent;"
+          width="52"
+        />
+        <div>
+          <img
+            alt="Picture of the author"
+            data-nimg="1"
+            decoding="async"
+            draggable="false"
+            height="52"
+            loading="lazy"
+            src="/_next/image?url=%2Fcheck.png&w=128&q=75"
+            srcset="/_next/image?url=%2Fcheck.png&w=64&q=75 1x, /_next/image?url=%2Fcheck.png&w=128&q=75 2x"
+            style="color: transparent;"
+            width="52"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sticker tests matches the snapshot 1`] = `
+<div>
+  <div
+    class="container sticker"
+    data-board="left"
+    data-id="3c804f02-fc55-4201-8a21-117430a45f16"
+    role="presentation"
+    style="top: 110px; left: 230px; z-index: 1;"
+  >
+    <span
+      data-role="date"
+    >
+      02-03-2024 08:03:55 AM
+    </span>
+    <div
+      data-role="content-wrapper"
+    >
+      <span>
+        Draggable element 1
+      </span>
+    </div>
+    <div
+      data-role="image-wrapper"
+    >
+      <img
+        alt="Picture of the author"
+        data-nimg="1"
+        decoding="async"
+        draggable="false"
+        height="13"
+        loading="lazy"
+        src="/_next/image?url=%2Freg.png&w=32&q=75"
+        srcset="/_next/image?url=%2Freg.png&w=16&q=75 1x, /_next/image?url=%2Freg.png&w=32&q=75 2x"
+        style="color: transparent;"
+        width="13"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Sticker tests matches the snapshot when isDeleteMode is true 1`] = `
+<div>
+  <div
+    class="container sticker"
+    data-board="left"
+    data-id="3c804f02-fc55-4201-8a21-117430a45f16"
+    role="presentation"
+    style="top: 110px; left: 230px; z-index: 1;"
+  >
+    <span
+      data-role="date"
+    >
+      02-03-2024 08:03:55 AM
+    </span>
+    <div
+      data-role="content-wrapper"
+    >
+      <span>
+        Draggable element 1
+      </span>
+    </div>
+    <div
+      data-role="image-wrapper"
+    >
+      <img
+        alt="Picture of the author"
+        data-nimg="1"
+        decoding="async"
+        draggable="false"
+        height="13"
+        loading="lazy"
+        src="/_next/image?url=%2Fdel.png&w=32&q=75"
+        srcset="/_next/image?url=%2Fdel.png&w=16&q=75 1x, /_next/image?url=%2Fdel.png&w=32&q=75 2x"
+        style="color: transparent;"
+        width="13"
+      />
+    </div>
+  </div>
+</div>
+`;

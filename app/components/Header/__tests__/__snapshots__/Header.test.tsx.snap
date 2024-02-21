@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header tests matches the snapshot 1`] = `
+<div>
+  <header
+    class="header"
+  >
+    <div />
+    <div>
+      <div
+        class="header-logo"
+      >
+        <div />
+        <div
+          class="header-logo-title"
+        >
+          <span>
+            clÈon
+          </span>
+        </div>
+        <div
+          class="header-logo-subtitle"
+        >
+          <span>
+            l\`usine incontournable pour l\`automobile de demain
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+`;

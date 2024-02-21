@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`decreaseZIndexMoreThan with stickers 1`] = `
+<body>
+  <div
+    class="sticker"
+    data-board="left"
+    style="z-index: 1;"
+  />
+  <div
+    class="sticker"
+    data-board="left"
+    style="z-index: 2;"
+  />
+</body>
+`;
+
+exports[`decreaseZIndexMoreThan without stickers 1`] = `<body />`;

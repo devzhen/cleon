@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeftSide tests matches the snapshot 1`] = `
+<div>
+  <div
+    class="leftSide sticker-container"
+    data-board="left"
+  >
+    <div
+      data-role="drag-area"
+      style="top: 0px; left: 0px; width: -6px; height: -6px;"
+    />
+    <div
+      data-role="drag-area"
+      style="top: 0px; left: 0px; width: -6px; height: -6px;"
+    />
+    <div
+      data-role="drag-area"
+      style="top: 0px; left: 0px; width: -6px; height: -6px;"
+    />
+    <div
+      class="floatingWrapper"
+    >
+      <div
+        class="leftBannerWrapper"
+      >
+        <div
+          class="banner"
+        >
+          <img
+            alt="Banner 1"
+            data-nimg="1"
+            decoding="async"
+            draggable="false"
+            fetchpriority="high"
+            height="132"
+            src="/_next/image?url=%2Fbanner1.jpeg&w=384&q=75"
+            srcset="/_next/image?url=%2Fbanner1.jpeg&w=256&q=75 1x, /_next/image?url=%2Fbanner1.jpeg&w=384&q=75 2x"
+            style="color: transparent;"
+            width="185"
+          />
+        </div>
+        <div
+          class="banner"
+        >
+          <img
+            alt="Banner 2"
+            data-nimg="1"
+            decoding="async"
+            draggable="false"
+            fetchpriority="high"
+            height="132"
+            src="/_next/image?url=%2Fbanner2.jpeg&w=384&q=75"
+            srcset="/_next/image?url=%2Fbanner2.jpeg&w=256&q=75 1x, /_next/image?url=%2Fbanner2.jpeg&w=384&q=75 2x"
+            style="color: transparent;"
+            width="185"
+          />
+        </div>
+        <div
+          class="banner"
+        >
+          <img
+            alt="Banner 3"
+            data-nimg="1"
+            decoding="async"
+            draggable="false"
+            fetchpriority="high"
+            height="132"
+            src="/_next/image?url=%2Fbanner3.jpeg&w=384&q=75"
+            srcset="/_next/image?url=%2Fbanner3.jpeg&w=256&q=75 1x, /_next/image?url=%2Fbanner3.jpeg&w=384&q=75 2x"
+            style="color: transparent;"
+            width="185"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="logoWrapper"
+    >
+      <div
+        class="floatingWrapper"
+      >
+        <div>
+          <img
+            alt="Picture of the author"
+            data-nimg="1"
+            decoding="async"
+            draggable="false"
+            height="52"
+            loading="lazy"
+            src="/_next/image?url=%2Fgerb-1.png&w=96&q=75"
+            srcset="/_next/image?url=%2Fgerb-1.png&w=48&q=75 1x, /_next/image?url=%2Fgerb-1.png&w=96&q=75 2x"
+            style="color: transparent;"
+            width="39"
+          />
+          <span>
+            sÈcuritÈ
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="buttonsWrapper"
+    >
+      <div
+        class="floatingWrapper"
+      >
+        <div
+          class="container"
+          style="margin-top: 22px; margin-right: 16px;"
+        >
+          <button>
+            +
+          </button>
+          <button>
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+    <div
+      class="bottomBannerWrapper"
+    >
+      <div
+        class="floatingWrapper"
+      >
+        <div
+          class="banner bottomBanner"
+        >
+          <img
+            alt="Banner 4"
+            data-nimg="1"
+            decoding="async"
+            draggable="false"
+            height="188"
+            loading="lazy"
+            src="/_next/image?url=%2Fbanner4.jpeg&w=384&q=75"
+            srcset="/_next/image?url=%2Fbanner4.jpeg&w=256&q=75 1x, /_next/image?url=%2Fbanner4.jpeg&w=384&q=75 2x"
+            style="color: transparent;"
+            width="129"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="container sticker"
+      data-board="left"
+      data-id="b4627087-627c-4d6b-8d58-56cf3646ff5d"
+      role="presentation"
+      style="top: 110px; left: 230px; z-index: 1;"
+    >
+      <span
+        data-role="date"
+      >
+        02-03-2024 08:03:55 AM
+      </span>
+      <div
+        data-role="content-wrapper"
+      >
+        <span>
+          Draggable element 1
+        </span>
+      </div>
+      <div
+        data-role="image-wrapper"
+      >
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          height="13"
+          loading="lazy"
+          src="/_next/image?url=%2Freg.png&w=32&q=75"
+          srcset="/_next/image?url=%2Freg.png&w=16&q=75 1x, /_next/image?url=%2Freg.png&w=32&q=75 2x"
+          style="color: transparent;"
+          width="13"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

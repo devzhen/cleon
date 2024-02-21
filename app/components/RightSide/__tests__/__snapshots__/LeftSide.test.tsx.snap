@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RightSide tests matches the snapshot 1`] = `
+<div>
+  <div
+    class="rightSide sticker-container"
+    data-board="right"
+  >
+    <div
+      data-role="drag-area"
+      style="top: 0px; left: 0px; width: 0px; height: 0px; opacity: 0.5;"
+    />
+    <div
+      data-role="drag-area"
+      style="top: 0px; left: 0px; width: 0px; height: 0px; opacity: 0.5;"
+    />
+    <div
+      data-role="drag-area"
+      style="top: 0px; left: 0px; width: 0px; height: 0px; opacity: 0.5;"
+    />
+    <div
+      data-role="drag-area"
+      style="top: 0px; left: 0px; width: -6px; height: 0px; opacity: 0.5;"
+    />
+    <div
+      data-role="drag-area"
+      style="top: 0px; left: 0px; width: 0px; height: 0px; opacity: 0.5;"
+    />
+    <div
+      data-role="header"
+    >
+      <img
+        alt="Picture of the author"
+        data-nimg="1"
+        decoding="async"
+        draggable="false"
+        height="47"
+        loading="lazy"
+        src="/_next/image?url=%2Fscrin-3-graf.png&w=96&q=75"
+        srcset="/_next/image?url=%2Fscrin-3-graf.png&w=48&q=75 1x, /_next/image?url=%2Fscrin-3-graf.png&w=96&q=75 2x"
+        style="color: transparent;"
+        width="47"
+      />
+      <span>
+        vie de l’uet
+      </span>
+    </div>
+    <div
+      data-role="buttons-row"
+    >
+      <div
+        class="container"
+        style="margin-top: 0px; margin-right: 10px;"
+      >
+        <button>
+          +
+        </button>
+        <button>
+          -
+        </button>
+      </div>
+      <div>
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          fetchpriority="high"
+          height="185"
+          src="/_next/image?url=%2Fscrin3-a3-right1.jpg&w=640&q=75"
+          srcset="/_next/image?url=%2Fscrin3-a3-right1.jpg&w=384&q=75 1x, /_next/image?url=%2Fscrin3-a3-right1.jpg&w=640&q=75 2x"
+          style="color: transparent;"
+          width="262"
+        />
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          fetchpriority="high"
+          height="185"
+          src="/_next/image?url=%2Fscrin3-a3-right2.jpg&w=640&q=75"
+          srcset="/_next/image?url=%2Fscrin3-a3-right2.jpg&w=384&q=75 1x, /_next/image?url=%2Fscrin3-a3-right2.jpg&w=640&q=75 2x"
+          style="color: transparent;"
+          width="262"
+        />
+      </div>
+    </div>
+    <div />
+    <div
+      data-role="banners-row"
+    >
+      <div>
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          fetchpriority="high"
+          height="185"
+          src="/_next/image?url=%2Fscrin3-a3-right3.jpg&w=640&q=75"
+          srcset="/_next/image?url=%2Fscrin3-a3-right3.jpg&w=384&q=75 1x, /_next/image?url=%2Fscrin3-a3-right3.jpg&w=640&q=75 2x"
+          style="color: transparent;"
+          width="262"
+        />
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          fetchpriority="high"
+          height="185"
+          src="/_next/image?url=%2Fscrin3-a3-right4.jpg&w=640&q=75"
+          srcset="/_next/image?url=%2Fscrin3-a3-right4.jpg&w=384&q=75 1x, /_next/image?url=%2Fscrin3-a3-right4.jpg&w=640&q=75 2x"
+          style="color: transparent;"
+          width="262"
+        />
+      </div>
+      <div>
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          fetchpriority="high"
+          height="188"
+          src="/_next/image?url=%2Fscrin3-a4-right1.jpg&w=384&q=75"
+          srcset="/_next/image?url=%2Fscrin3-a4-right1.jpg&w=256&q=75 1x, /_next/image?url=%2Fscrin3-a4-right1.jpg&w=384&q=75 2x"
+          style="color: transparent;"
+          width="129"
+        />
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          fetchpriority="high"
+          height="188"
+          src="/_next/image?url=%2Fscrin3-a4-right2.jpg&w=384&q=75"
+          srcset="/_next/image?url=%2Fscrin3-a4-right2.jpg&w=256&q=75 1x, /_next/image?url=%2Fscrin3-a4-right2.jpg&w=384&q=75 2x"
+          style="color: transparent;"
+          width="129"
+        />
+      </div>
+    </div>
+    <div
+      class="container sticker"
+      data-board="right"
+      data-id="930c4351-09f2-4148-8b08-c39c9494fadb"
+      role="presentation"
+      style="top: 110px; left: 230px; z-index: 1;"
+    >
+      <span
+        data-role="date"
+      >
+        02-03-2024 08:03:55 AM
+      </span>
+      <div
+        data-role="content-wrapper"
+      >
+        <span>
+          Draggable element 1
+        </span>
+      </div>
+      <div
+        data-role="image-wrapper"
+      >
+        <img
+          alt="Picture of the author"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          height="13"
+          loading="lazy"
+          src="/_next/image?url=%2Freg.png&w=32&q=75"
+          srcset="/_next/image?url=%2Freg.png&w=16&q=75 1x, /_next/image?url=%2Freg.png&w=32&q=75 2x"
+          style="color: transparent;"
+          width="13"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
