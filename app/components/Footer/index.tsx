@@ -3,7 +3,9 @@ import Image from 'next/image';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  // eslint-disable-next-line no-console
   console.log(111, process.env.NEXT_PUBLIC_GITHUB_REPO);
+  // eslint-disable-next-line no-console
   console.log(222, process.env.GITHUB_REPO);
 
   return (
