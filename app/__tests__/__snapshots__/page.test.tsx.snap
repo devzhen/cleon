@@ -37,6 +37,43 @@ exports[`Page matches the snapshot 1`] = `
     <div>
       {"initialStickers":{"uuid/v4":{"id":"uuid/v4","top":449,"left":963,"createdAt":"2024-02-03T07:10:11.615Z","text":"Draggable element 4","board":"right","zIndex":3}}}
     </div>
+    <footer
+      class="footer"
+    >
+      <div
+        class="footerBg"
+      >
+        <a>
+          <img
+            alt="Img"
+            data-nimg="1"
+            decoding="async"
+            draggable="false"
+            height="24"
+            loading="lazy"
+            src="/_next/image?url=%2Fgithub-mark.png&w=48&q=75"
+            srcset="/_next/image?url=%2Fgithub-mark.png&w=32&q=75 1x, /_next/image?url=%2Fgithub-mark.png&w=48&q=75 2x"
+            style="color: transparent;"
+            width="24"
+          />
+          <img
+            alt="Img"
+            data-nimg="1"
+            decoding="async"
+            draggable="false"
+            height="24"
+            loading="lazy"
+            src="/_next/image?url=%2Fgithub-logo.png&w=128&q=75"
+            srcset="/_next/image?url=%2Fgithub-logo.png&w=64&q=75 1x, /_next/image?url=%2Fgithub-logo.png&w=128&q=75 2x"
+            style="color: transparent;"
+            width="54"
+          />
+          <span>
+            go to the repo
+          </span>
+        </a>
+      </div>
+    </footer>
   </main>
 </div>
 `;
