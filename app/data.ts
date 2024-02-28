@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { BOARD_TYPE } from './constants';
 
 export const firstId = uuid();
-const secondId = uuid();
+export const secondId = uuid();
 const thirdId = uuid();
 const fourthId = uuid();
 

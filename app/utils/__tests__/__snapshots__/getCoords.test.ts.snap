@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getCoords return coords 1`] = `
+{
+  "bottom": 110,
+  "height": 100,
+  "left": 10,
+  "right": 110,
+  "top": 10,
+  "width": 100,
+}
+`;

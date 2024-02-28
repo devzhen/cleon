@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`onInteractHandler for the left board 1`] = `
+<body>
+  <div>
+    <div
+      class="sticker-container boardActive"
+      data-board="left"
+    >
+      <div
+        class="sticker-container boardNotActive"
+        data-board="right"
+      />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`onInteractHandler for the right board 1`] = `
+<body>
+  <div>
+    <div
+      class="sticker-container boardNotActive"
+      data-board="left"
+    >
+      <div
+        class="sticker-container boardActive"
+        data-board="right"
+      />
+    </div>
+  </div>
+</body>
+`;

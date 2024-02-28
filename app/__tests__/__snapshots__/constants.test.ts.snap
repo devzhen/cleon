@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`constants matches snapshot 1`] = `
+{
+  "BOARD_TYPE": {
+    "all": "all",
+    "left": "left",
+    "right": "right",
+  },
+  "DEFAULT_STICKER_POS": {
+    "left": 220,
+    "top": 100,
+  },
+  "STICKERS_INITIAL_VALUE": {
+    "left": {},
+    "right": {},
+  },
+}
+`;

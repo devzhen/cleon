@@ -1,8 +1,6 @@
 import { Roboto } from 'next/font/google';
-import { headers } from 'next/headers';
 
-import { BOARD_TYPE, STICKERS_INITIAL_VALUE } from '@/app/constants';
-
+import fetchStickers from './api/stickers/fetchStickers';
 import Header from './components/Header';
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
@@ -14,21 +12,7 @@ const font = Roboto({
 });
 
 export default async function Home() {
-  let stickers = { ...STICKERS_INITIAL_VALUE };
-
-  try {
-    const requestUrl = headers().get('x-url');
-    console.log('URL -', requestUrl);
-
-    const url = new URL(`${requestUrl}api/stickers`);
-    url.searchParams.set('board', BOARD_TYPE.all);
-
-    const response = await fetch(url.toString());
-
-    stickers = await response.json();
-  } catch (err) {
-    // Handle errors
-  }
+  const stickers = await fetchStickers();
 
   return (
     <main className={`main ${font.className}`}>

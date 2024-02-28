@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page matches the snapshot 1`] = `
+<div>
+  <main
+    class="main className"
+  >
+    <header
+      class="header"
+    >
+      <div />
+      <div>
+        <div
+          class="header-logo"
+        >
+          <div />
+          <div
+            class="header-logo-title"
+          >
+            <span>
+              clÈon
+            </span>
+          </div>
+          <div
+            class="header-logo-subtitle"
+          >
+            <span>
+              l\`usine incontournable pour l\`automobile de demain
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div>
+      {"initialStickers":{"uuid/v4":{"id":"uuid/v4","top":449,"left":963,"createdAt":"2024-02-03T07:10:11.615Z","text":"Draggable element 4","board":"right","zIndex":3}}}
+    </div>
+    <div>
+      {"initialStickers":{"uuid/v4":{"id":"uuid/v4","top":449,"left":963,"createdAt":"2024-02-03T07:10:11.615Z","text":"Draggable element 4","board":"right","zIndex":3}}}
+    </div>
+  </main>
+</div>
+`;

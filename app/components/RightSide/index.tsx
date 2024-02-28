@@ -17,7 +17,7 @@ import StickerComponent from '../Sticker';
 
 import styles from './RightSide.module.css';
 
-type RightSideProps = {
+export type RightSideProps = {
   initialStickers: Record<string, Sticker>;
 };
 
