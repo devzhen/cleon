@@ -4,7 +4,7 @@
   height: 181px;
   padding: 8px;
   background-color: var(--color-modal-background);
-  border: 1px solid white;
+  border: 1px solid #ffffff;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   user-select: none;

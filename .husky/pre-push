@@ -2,3 +2,4 @@ yarn lint
 yarn type-check
 yarn format
 yarn test
+yarn lint:css

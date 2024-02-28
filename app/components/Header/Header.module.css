@@ -27,7 +27,7 @@
 .header-logo > div:nth-child(1) {
   width: 5px;
   height: 44px;
-  background-color: #fff;
+  background-color: #ffffff;
   position: relative;
   top: 7px;
   left: 19px;
@@ -41,7 +41,7 @@
 
 .header-logo-title span {
   font-size: 18px;
-  color: #fff;
+  color: #ffffff;
   text-transform: uppercase;
 }
 

@@ -9,10 +9,6 @@
   margin-right: var(--margin-right);
 }
 
-.container button:active {
-  box-shadow: 2px 2px 5px var(--color-main-background);
-}
-
 .container button {
   display: flex;
   align-items: center;
@@ -21,14 +17,18 @@
   height: 31px;
   background-color: var(--color-main-background);
   cursor: pointer;
-  color: #fff;
+  color: #ffffff;
   user-select: none;
   font-size: 30px;
-  font-weight: 400;
+  font-weight: normal;
   line-height: 20px;
   text-transform: uppercase;
   border: none;
   outline: none;
+}
+
+.container button:active {
+  box-shadow: 2px 2px 5px var(--color-main-background);
 }
 
 .container button:first-child {
