@@ -1,0 +1,30 @@
+.footer {
+  grid-column: 2 span;
+  height: 44px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.footerBg {
+  height: 41px;
+  margin-top: auto;
+  padding-left: 22px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  background-color: var(--color-main-background);
+}
+
+.footer a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer span {
+  margin-left: 2px;
+  font-size: 14px;
+  color: var(--color-text-area-color);
+}

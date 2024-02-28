@@ -5,8 +5,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   min-width: 638px;
   max-width: 638px;
-  min-height: 863px;
-  height: calc(100vh - 72px);
+  height: calc(100vh - 72px - 44px);
   border: 3px solid var(--color-active-board);
   background-color: var(--color-board-background);
   z-index: 2;

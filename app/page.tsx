@@ -1,6 +1,7 @@
 import { Roboto } from 'next/font/google';
 
 import fetchStickers from './api/stickers/fetchStickers';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
@@ -19,6 +20,7 @@ export default async function Home() {
       <Header />
       <LeftSide initialStickers={stickers.left} />
       <RightSide initialStickers={stickers.right} />
+      <Footer />
     </main>
   );
 }

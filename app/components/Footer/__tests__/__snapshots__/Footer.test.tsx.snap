@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer tests matches the snapshot 1`] = `
+<div>
+  <footer
+    class="footer"
+  >
+    <div
+      class="footerBg"
+    >
+      <a>
+        <img
+          alt="Img"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          height="24"
+          loading="lazy"
+          src="/_next/image?url=%2Fgithub-mark.png&w=48&q=75"
+          srcset="/_next/image?url=%2Fgithub-mark.png&w=32&q=75 1x, /_next/image?url=%2Fgithub-mark.png&w=48&q=75 2x"
+          style="color: transparent;"
+          width="24"
+        />
+        <img
+          alt="Img"
+          data-nimg="1"
+          decoding="async"
+          draggable="false"
+          height="24"
+          loading="lazy"
+          src="/_next/image?url=%2Fgithub-logo.png&w=128&q=75"
+          srcset="/_next/image?url=%2Fgithub-logo.png&w=64&q=75 1x, /_next/image?url=%2Fgithub-logo.png&w=128&q=75 2x"
+          style="color: transparent;"
+          width="54"
+        />
+        <span>
+          go to the repo
+        </span>
+      </a>
+    </div>
+  </footer>
+</div>
+`;
